@@ -77,7 +77,19 @@ export default class Model {
     };
   }
   // add methods to query, insert, and update the model here. E.g.,
-  // getAllQstns() {
-  //   return this.data.questions;
-  // }
+  getAllQstns() {
+    return this.data.questions;
+  }
+  getQuestionCount() {
+    return this.data.questions.length;
+  }
+/*   getAnswerCount(qid) {
+    for (let i = 0; i < this.data.questions.length; i++) {
+      if (this.data.questions[i].qid == qid) {
+        return this.data.questions[i].ansIds.length;
+      }
+    }
+    console.log("Question ID not found");
+    return 0;
+  } */
 }
