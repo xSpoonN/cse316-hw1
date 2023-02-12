@@ -83,13 +83,11 @@ export default class Model {
   getQuestionCount() {
     return this.data.questions.length;
   }
-/*   getAnswerCount(qid) {
-    for (let i = 0; i < this.data.questions.length; i++) {
-      if (this.data.questions[i].qid == qid) {
-        return this.data.questions[i].ansIds.length;
+  findTagName(tagid) {
+    for (let i = 0; i < this.data.tags.length; i++) {
+      if (this.data.tags[i].tid == tagid) {
+        return this.data.tags[i].name;
       }
     }
-    console.log("Question ID not found");
-    return 0;
-  } */
+  }
 }
