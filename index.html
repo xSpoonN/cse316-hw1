@@ -4,24 +4,80 @@
   <script type="module" src="src/index.js"></script>
   <title>Queue Underflow</title>
   <style>
+    body {
+      font-family:Arial, Helvetica, sans-serif;
+    }
     .header {
       background-color:blanchedalmond;
       text-align: center;
       padding: 1px;
+      width:100%;
+      min-width: 400px;
+      height:80px;
+      position: fixed;
+      z-index:5;
       font-family: "Comic Sans MS";
       text-shadow: -2px -2px #e01d1d, -4px -4px #e0721d,
                    -6px -6px #e0c31d, -8px -8px #58e01d,
                    -10px -10px #1de07e, -12px -12px #1d98e0,
                    -14px -14px #881de0, -16px -16px #c91de0;
     }
+    #sidebar {
+      height:100%;
+      width:15%;
+      min-width:125px;
+      font-size:large;
+      text-align:center;
+      position:fixed;
+      padding-top:85px;
+      line-height: 30px;
+      background-color: lavenderblush;
+    }
+    .sidebutt {
+      color:darkslateblue;
+      display: block;
+    }
+    .sidebutt:hover {
+      background-color:cadetblue;
+    }
     #search {
       text-align: left;
       position: fixed;
       margin:30px;
+      width:20%;
       right:1px;
+      font-size:medium;
     }
     #title {
       display: inline-block;
+    }
+    .content {
+      margin-left: max(20%,150px);
+      padding-top:90px;
+      z-index:1;
+    }
+    .contentheader {
+      font-size:x-large;
+      font-weight: bold;
+      display:inline-block;
+    }
+    #askqbutt {
+      padding:6px;
+      display:inline-block;
+      position:fixed;
+      font-size:medium;
+      background-color:cornflowerblue;
+      color:white;
+      border-color:cornflowerblue;
+      right:20px;
+      top:120px;
+    }
+    #questioncount {
+      display:inline-block;
+      width:50%
+    }
+    .questionsort {
+      display:inline;
     }
   </style>
 </head>
@@ -32,6 +88,19 @@
   </div>
 
   <div id="main" class="main">
+    <div id="sidebar">
+      <a class="sidebutt">Questions</a> <!--Href to get to different pages-->
+      <a class="sidebutt">Tags</a>
+    </div>
+    <div id="content" class="content">
+      <p class="contentheader">All Questions</p>
+      <button id="askqbutt">Ask Question</button>
+      <br>
+      <p id="questioncount">x questions</p>
+      <button class="questionsort">Newest</button>
+      <button class="questionsort">Active</button>
+      <button class="questionsort">Unanswered</button>
+    </div>
   </div>
 </body>
 </html>
