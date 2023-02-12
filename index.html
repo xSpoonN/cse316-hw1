@@ -2,9 +2,33 @@
 <head>
   <link rel="stylesheet" href="css/index.css">
   <script type="module" src="src/index.js"></script>
+  <title>Queue Underflow</title>
+  <style>
+    .header {
+      background-color:blanchedalmond;
+      text-align: center;
+      padding: 1px;
+      font-family: "Comic Sans MS";
+      text-shadow: -2px -2px #e01d1d, -4px -4px #e0721d,
+                   -6px -6px #e0c31d, -8px -8px #58e01d,
+                   -10px -10px #1de07e, -12px -12px #1d98e0,
+                   -14px -14px #881de0, -16px -16px #c91de0;
+    }
+    #search {
+      text-align: left;
+      position: fixed;
+      margin:30px;
+      right:1px;
+    }
+    #title {
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
   <div id="header" class="header">
+    <h1 id="title">Queue Underflow</h1>
+    <input type="text" id="search" placeholder="Search ...">
   </div>
 
   <div id="main" class="main">
