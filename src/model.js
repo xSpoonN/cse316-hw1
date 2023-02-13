@@ -124,14 +124,16 @@ export default class Model {
   getAllQstns() {
     return this.data.questions;
   }
+  getAllAnswers() {
+    return this.data.answers;
+  }
+  getAllTags() {
+    return this.data.tags;
+  }
   getQuestionCount() {
     return this.data.questions.length;
   }
   findTagName(tagid) {
-    for (let i = 0; i < this.data.tags.length; i++) {
-      if (this.data.tags[i].tid == tagid) {
-        return this.data.tags[i].name;
-      }
-    }
+    return this.data.tags.find(x => x.tid == tagid).name;
   }
 }

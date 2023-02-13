@@ -1,15 +1,43 @@
 import Model from './model.js';
 
 var sortOrder = "Newest";
+
+function compareNewest(a, b) {
+  if (a.askDate > b.askDate) return -1;
+  if (a.askDate < b.askDate) return 1;
+  return 0;
+}
+function compareActive(a, b) { //I'm pretty sure this is working correctly? Test more later
+  var aLatest = 0, bLatest = 0;
+  const modle = new Model();
+  var ans = modle.getAllAnswers();
+  for (let i = 0; i < a.ansIds.length; i++) {
+    var answe = ans.find(x => x.aid == a.ansIds[i]);
+    if (aLatest == 0 || answe.ansDate > aLatest) {
+      aLatest = answe.ansDate;
+    }
+  }
+  for (let i = 0; i < b.ansIds.length; i++) {
+    var answe = ans.find(x => x.aid == b.ansIds[i]);
+    if (bLatest == 0 || answe.ansDate > bLatest) {
+      bLatest = answe.ansDate;
+    }
+  }
+  if (aLatest > bLatest) return -1;
+  if (aLatest < bLatest) return 1;
+  return 0;
+}
+
 window.onload = function() {
   const modle = new Model();
   document.getElementById("questioncount").innerHTML = `${modle.getQuestionCount()} questions`;
   var tbl = document.getElementById("questions");
   var qList = modle.getAllQstns();
-  /* Need to rework the way this loop works according to sort option */
-  
-  for (let i = 0; i < modle.getQuestionCount(); i++) {
+  if (sortOrder == "Newest" || sortOrder == "Unanswered") qList.sort(compareNewest);
+  if (sortOrder == "Active") qList.sort(compareActive);
+  for (let i = 0; i < qList.length; i++) {
     var question = qList[i];
+    if (sortOrder == "Unanswered" && question.ansIds.length != 0) continue;
     var newRow = tbl.insertRow();
     newRow.insertCell(0).innerHTML = `${question.ansIds.length} answers <br>${question.views} views`;
     var midCell = newRow.insertCell(1);
@@ -18,7 +46,6 @@ window.onload = function() {
       midCell.innerHTML += '<button style="color:white;background-color:grey;display:inline-block;">' 
       + `${modle.findTagName(question.tagIds[j])}</button>`;
     }
-    /* Need to reformat the date according to doc reqs */
     var now = new Date('February 12, 2023 19:53:46');
     var rightCell = newRow.insertCell(2);
     rightCell.innerHTML = `${question.askedBy} asked `;
