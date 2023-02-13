@@ -21,6 +21,26 @@ export default class Model {
                     askDate: new Date('January 01, 2022 21:06:12'),
                     ansIds: ['a3', 'a4', 'a5'],
                     views: 121,
+                  },
+                  {
+                    qid: 'q3',
+                    title: 'why my pee red',
+                    text: 'i snorted some green dust in a nyc alley, and now i have periods despite being a male. pls help am i dying',
+                    tagIds: ['t5'],
+                    askedBy : 'Jason',
+                    askDate: new Date('January 17, 2023 09:23:18'),
+                    ansIds: ['a6'],
+                    views: 394523,
+                  },
+                  {
+                    qid: 'q4',
+                    title: 'there is a fat man stuck in my chimney claiming to be santa claus',
+                    text: 'he smells like piss, how do i get rid of him',
+                    tagIds: ['t6','t7'],
+                    askedBy : 'clevelandbulldogs81',
+                    askDate: new Date('February 12, 2023 04:02:46'),
+                    ansIds: ['a6','a7'],
+                    views: 4,
                   }
                 ],
       tags: [
@@ -39,6 +59,18 @@ export default class Model {
         {
           tid: 't4',
           name: 'shared-preferences',
+        },
+        {
+          tid: 't5',
+          name: 'c++',
+        },
+        {
+          tid: 't6',
+          name: 'mysql',
+        },
+        {
+          tid: 't7',
+          name: 'ice-fishing',
         }
       ],
 
@@ -47,31 +79,43 @@ export default class Model {
           aid: 'a1',
           text: 'React Router is mostly a wrapper around the history library. history handles interaction with the browser\'s window.history for you with its browser and hash histories. It also provides a memory history which is useful for environments that don\'t have a global history. This is particularly useful in mobile app development (react-native) and unit testing with Node.',
           ansBy: 'hamkalo',
-          ansDate: new Date('March 02, 2022 15:30:00'),
+          ansDate: new Date('March 02, 2022 15:30:00')
         },
         {
           aid: 'a2',
           text: 'On my end, I like to have a single history object that I can carry even outside components. I like to have a single history.js file that I import on demand, and just manipulate it. You just have to change BrowserRouter to Router, and specify the history prop. This doesn\'t change anything for you, except that you have your own history object that you can manipulate as you want. You need to install history, the library used by react-router.',
           ansBy: 'azad',
-          ansDate: new Date('January 31, 2022 15:30:00'),
+          ansDate: new Date('January 31, 2022 15:30:00')
         },
         {
           aid: 'a3',
           text: 'Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background.',
           ansBy: 'abaya',
-          ansDate: new Date('April 21, 2022 15:25:22'),
+          ansDate: new Date('April 21, 2022 15:25:22')
         },
         {
           aid: 'a4',
           text: 'YourPreference yourPrefrence = YourPreference.getInstance(context); yourPreference.saveData(YOUR_KEY,YOUR_VALUE);',
           ansBy: 'alia',
-          ansDate: new Date('December 02, 2022 02:20:59'),
+          ansDate: new Date('December 02, 2022 02:20:59')
         },
         {
           aid: 'a5',
           text: 'I just found all the above examples just too confusing, so I wrote my own. ',
           ansBy: 'sana',
-          ansDate: new Date('December 31, 2022 20:20:59'),
+          ansDate: new Date('December 31, 2022 20:20:59')
+        },
+        {
+          aid: 'a6',
+          text: 'kekw',
+          ansBy: 'meeposhy',
+          ansDate: new Date('January 25, 2023 14:22:15')
+        },
+        {
+          aid: 'a7',
+          text: 'light a small fire in your fireplace. the smoke will entice him to evacuate the premises. careful not to light too big of a fire else it will fill up your house. source: personal experience.',
+          ansBy: 'benshapiro',
+          ansDate: new Date('February 12, 2023 05:13:45')
         }
       ]
     };
