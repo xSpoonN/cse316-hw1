@@ -2,6 +2,15 @@ import Model from './model.js';
 
 var sortOrder = "Newest";
 
+function resetTable() {
+  var tbl = document.getElementById("questions");
+  while (tbl.rows.length > 0) { tbl.deleteRow(0); }
+  fetchQuestions();
+}
+function setNewest() { sortOrder = "Newest"; resetTable(); }
+function setActive() { sortOrder = "Active"; resetTable(); }
+function setUnanswered() { sortOrder = "Unanswered"; resetTable(); }
+
 function compareNewest(a, b) {
   if (a.askDate > b.askDate) return -1;
   if (a.askDate < b.askDate) return 1;
@@ -11,13 +20,13 @@ function compareActive(a, b) { //I'm pretty sure this is working correctly? Test
   var aLatest = 0, bLatest = 0;
   const modle = new Model();
   var ans = modle.getAllAnswers();
-  for (let i = 0; i < a.ansIds.length; i++) {
+  for (let i = 0; i < a.ansIds.length; i++) { //Finds the latest answer
     var answe = ans.find(x => x.aid == a.ansIds[i]);
     if (aLatest == 0 || answe.ansDate > aLatest) {
       aLatest = answe.ansDate;
     }
   }
-  for (let i = 0; i < b.ansIds.length; i++) {
+  for (let i = 0; i < b.ansIds.length; i++) { //Finds the latest answer
     var answe = ans.find(x => x.aid == b.ansIds[i]);
     if (bLatest == 0 || answe.ansDate > bLatest) {
       bLatest = answe.ansDate;
@@ -28,35 +37,46 @@ function compareActive(a, b) { //I'm pretty sure this is working correctly? Test
   return 0;
 }
 
-window.onload = function() {
+function fetchQuestions() {
+  //console.log(`Sorting by ${sortOrder}`);
   const modle = new Model();
   document.getElementById("questioncount").innerHTML = `${modle.getQuestionCount()} questions`;
   var tbl = document.getElementById("questions");
   var qList = modle.getAllQstns();
+
+  /* Sort Options */
   if (sortOrder == "Newest" || sortOrder == "Unanswered") qList.sort(compareNewest);
   if (sortOrder == "Active") qList.sort(compareActive);
+  //console.table(qList);
+
+  /* Question List */
   for (let i = 0; i < qList.length; i++) {
     var question = qList[i];
     if (sortOrder == "Unanswered" && question.ansIds.length != 0) continue;
     var newRow = tbl.insertRow();
+
+    /* Left Column */
     newRow.insertCell(0).innerHTML = `${question.ansIds.length} answers <br>${question.views} views`;
+
+    /* Middle Column */
     var midCell = newRow.insertCell(1);
     midCell.innerHTML = `${question.title} <br>`;
     for (let j = 0; j < question.tagIds.length; j++) {
       midCell.innerHTML += '<button style="color:white;background-color:grey;display:inline-block;">' 
       + `${modle.findTagName(question.tagIds[j])}</button>`;
     }
-    var now = new Date('February 12, 2023 19:53:46');
+
+    /* Right Column */
+    var now = new Date('February 12, 2023 19:53:46'); var askDate = question.askDate;
     var rightCell = newRow.insertCell(2);
     rightCell.innerHTML = `${question.askedBy} asked `;
-    var askDate = question.askDate;
     if (askDate.getFullYear() < now.getFullYear()) { //Last Year
       rightCell.innerHTML += `${askDate.toDateString().substring(4)} at 
-      ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + 
+      ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats to xx:xx
       `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
-    } else if (askDate.getMonth() < now.getMonth() || askDate.getDate() != now.getDate()) {
+    } else if (askDate.getMonth() < now.getMonth() || askDate.getDate() != now.getDate()) { //Diff Day
       rightCell.innerHTML += `${askDate.toDateString().substring(4,askDate.toDateString().length-5)} at
-      ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + 
+      ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats to xx:xx
       `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
     } else {
       /* Reminder to fix this to be more accurate. Currently it just takes the day/hour/minute value 
@@ -76,4 +96,11 @@ window.onload = function() {
       }
     }
   }
+}
+
+window.onload = function() {
+  document.getElementById("newbutt").onclick = setNewest;
+  document.getElementById("activebutt").onclick = setActive;
+  document.getElementById("unbutt").onclick = setUnanswered;
+  fetchQuestions();
 };

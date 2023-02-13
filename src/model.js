@@ -9,7 +9,7 @@ export default class Model {
                     tagIds: ['t1', 't2'],
                     askedBy : 'JoJi John',
                     askDate: new Date('December 17, 2020 03:24:00'),
-                    ansIds: ['a1', 'a2'],
+                    ansIds: ['a1', 'a2','a8'],
                     views: 10,
                   },
                   {
@@ -41,6 +41,26 @@ export default class Model {
                     askDate: new Date('February 12, 2023 04:02:46'),
                     ansIds: ['a6','a7'],
                     views: 4,
+                  },
+                  {
+                    qid: 'q5',
+                    title: 'who asked?',
+                    text: 'modcheck',
+                    tagIds: ['t8'],
+                    askedBy : 'uwuowo',
+                    askDate: new Date('February 12, 2023 19:32:12'),
+                    ansIds: [],
+                    views: 99,
+                  },
+                  {
+                    qid: 'q6',
+                    title: 'where are your fingers?',
+                    text: 'hey vsauce, michael here',
+                    tagIds: ['t8'],
+                    askedBy : 'awawawawawa',
+                    askDate: new Date('February 12, 2023 19:53:19'),
+                    ansIds: [],
+                    views: 23623,
                   }
                 ],
       tags: [
@@ -71,6 +91,14 @@ export default class Model {
         {
           tid: 't7',
           name: 'ice-fishing',
+        },
+        {
+          tid: 't8',
+          name: 'node.js',
+        },
+        {
+          tid: 't9',
+          name: 'mongodb',
         }
       ],
 
@@ -116,6 +144,12 @@ export default class Model {
           text: 'light a small fire in your fireplace. the smoke will entice him to evacuate the premises. careful not to light too big of a fire else it will fill up your house. source: personal experience.',
           ansBy: 'benshapiro',
           ansDate: new Date('February 12, 2023 05:13:45')
+        },
+        {
+          aid: 'a8',
+          text: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          ansBy: 'aaaaaaaaaaaaaaaaaa',
+          ansDate: new Date('January 12, 2023 15:11:24')
         }
       ]
     };
