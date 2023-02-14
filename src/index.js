@@ -3,10 +3,11 @@ import Model from './model.js';
 var sortOrder = "Newest";
 var modle = new Model();
 
-function resetTable() {
+function resetTable(newQ) {
   var tbl = document.getElementById("questions");
   while (tbl.rows.length > 0) { tbl.deleteRow(0); }
-  fetchQuestions();
+  if (newQ == undefined) fetchQuestions();
+  else fetchQuestions(newQ);
 }
 function setNewest() { sortOrder = "Newest"; resetTable(); }
 function setActive() { sortOrder = "Active"; resetTable(); }
@@ -107,27 +108,33 @@ window.onload = function() {
   switchToQuestionPage();
 };
 
-function checkSearch(event) {
+window.checkSearch = function checkSearch(event) {
+  //console.log("aivslaiuvl");
   if (event.keyCode == 13) {
     var result = search(document.getElementById("search").value);
     if (result == []) {
+    //console.log("No result");
       document.getElementById("nosearchresults").style.display = "block";
     } else {
-      fetchQuestions(result);
+      //console.log("Result");
+      resetTable(result);
     }
   }
 }
 
 function search(query) {
   var searchTerms = query.toLowerCase().split(" ");
-  var searchWords = searchTerms.filter(word => !/\[\w+\]/.test(word)); //Words are those that are not surrounded in brackets
-  var searchTags = searchTerms.filter(word => /\[\w+\]/.test(word));
+  var searchWords = searchTerms.filter(word => !/^\[\S+\]$/.test(word)); //Words are those that are not surrounded in brackets
+  var searchTags = searchTerms.filter(word => /^\[\S+\]$/.test(word));
+  searchTags = searchTags.map(tag => tag.replace(/\[|\]/g,""));
   const q = modle.data.questions; const t = modle.data.tags;
   var out = [];
   for (let i = 0; i < q.length; i++) {
-    if ((searchWords.some(term => q[i].title.toLowerCase().includes(term) || //If the title includes a search term
-        q[i].text.toLowerCase().includes(term))) &&                          //Or the description includes the search term
-        q[i].tagIds.some(tag => searchTags.some(term => term == t.find(x => x.tid == tag).name))) { //AND it has a tag from the list of tags.
+    if (((searchWords.some(term => q[i].title.toLowerCase().includes(term) || //If the title includes a search term
+        q[i].text.toLowerCase().includes(term))) || //Or the description includes the search term or is empty
+        searchWords.length == 0) && //Or there is no search word           AND
+        (q[i].tagIds.some(tag => searchTags.some(term => term == t.find(x => x.tid == tag).name)) || //it has a tag from the list of tags.
+        searchTags.length == 0)) { //Or there are no tags searched
       out.push(q[i]);
     }
   }
