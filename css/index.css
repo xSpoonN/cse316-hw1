@@ -39,6 +39,9 @@ body {
 .sidebutt:hover {
     background-color: cadetblue;
 }
+#activetab {
+    background-color: cadetblue;
+}
 
 #search {
     text-align: left;
@@ -89,4 +92,17 @@ body {
 .questions {
     border: 1px dotted black;
     width: 100%;
+}
+
+#qtitle {
+    width: 70%;
+    max-width: 665px;
+    height: 40px;
+    font-size: 20px
+}
+
+#qtext {
+    font-size: 14px;
+    max-width: 665px;
+    width: 70%
 }

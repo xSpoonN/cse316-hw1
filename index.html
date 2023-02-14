@@ -13,7 +13,7 @@
 
   <div id="main" class="main">
     <div id="sidebar">
-      <a class="sidebutt">Questions</a> <!--Href to get to different pages-->
+      <a class="sidebutt" id="activetab">Questions</a> <!--Href to get to different pages-->
       <a class="sidebutt">Tags</a>
     </div>
     <div id="content" class="content">
@@ -25,12 +25,16 @@
       <button id="activebutt" class="questionsort">Active</button>
       <button id="unbutt" class="questionsort">Unanswered</button>
       <br id="liststart">
-      <table id="questions" class="questions">
-<!--         <tr class="questions">
-          <td>asd</td><td>asd</td><td>asd</td>
-        </tr> -->
-
-      </table>
+      <table id="questions" class="questions"></table>
+    </div>
+    <div id="askquestion" class="content">
+      <!-- The idea is to hide the previous section on "Ask Question" -->
+      <h2>Question Title*</h2>
+      <p style="font-style:italic">Limit title to 100 characters or less</p>
+      <input type="text" id="qtitle">
+      <h2>Question Text*</h2>
+      <p style="font-style:italic">Add details</p>
+      <textarea id="qtext" cols="80" rows="10"></textarea>
     </div>
   </div>
 </body>
