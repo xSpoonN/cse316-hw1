@@ -102,5 +102,18 @@ window.onload = function() {
   document.getElementById("newbutt").onclick = setNewest;
   document.getElementById("activebutt").onclick = setActive;
   document.getElementById("unbutt").onclick = setUnanswered;
+  document.getElementById("askqbutt").onclick = switchToPostPage;
+  document.getElementById("postqbutt").onclick = switchToQuestionPage;
   fetchQuestions();
+  switchToQuestionPage();
 };
+
+function switchToPostPage() {
+  document.getElementById("content").style.display='none';
+  document.getElementById("askquestion").style.display='block';
+}
+
+function switchToQuestionPage() {
+  document.getElementById("content").style.display='block';
+  document.getElementById("askquestion").style.display='none';
+}

@@ -106,3 +106,19 @@ body {
     max-width: 665px;
     width: 70%
 }
+
+#qtags, #quser {
+    width: 70%;
+    max-width: 665px;
+    height: 40px;
+    font-size: 16px
+}
+
+#postqbutt {
+    padding: 6px;
+    display: inline-block;
+    font-size: medium;
+    background-color: cornflowerblue;
+    color: white;
+    border-color: cornflowerblue;
+}

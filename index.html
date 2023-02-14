@@ -31,10 +31,18 @@
       <!-- The idea is to hide the previous section on "Ask Question" -->
       <h2>Question Title*</h2>
       <p style="font-style:italic">Limit title to 100 characters or less</p>
-      <input type="text" id="qtitle">
+      <input type="text" id="qtitle" maxlength="100" required>
       <h2>Question Text*</h2>
       <p style="font-style:italic">Add details</p>
       <textarea id="qtext" cols="80" rows="10"></textarea>
+      <h2>Tags*</h2>
+      <p style="font-style:italic">Add keywords separated by whitespace</p>
+      <input type="text" id="qtags" pattern="[\w\s]{1,5}"> <!-- idk if this regex works yet -->
+      <h2>Username*</h2>
+      <input type="text" id="quser">
+      <br><br><br><br><br>
+      <button id="postqbutt">Post Question</button>
+      <p style="text-align:right">* indicates mandatory fields</p>
     </div>
   </div>
 </body>
