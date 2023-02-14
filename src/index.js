@@ -1,6 +1,7 @@
 import Model from './model.js';
 
 var sortOrder = "Newest";
+var modle = new Model();
 
 function resetTable() {
   var tbl = document.getElementById("questions");
@@ -18,7 +19,6 @@ function compareNewest(a, b) {
 }
 function compareActive(a, b) { //I'm pretty sure this is working correctly? Test more later
   var aLatest = 0, bLatest = 0;
-  const modle = new Model();
   var ans = modle.getAllAnswers();
   for (let i = 0; i < a.ansIds.length; i++) { //Finds the latest answer
     var answe = ans.find(x => x.aid == a.ansIds[i]);
@@ -39,7 +39,6 @@ function compareActive(a, b) { //I'm pretty sure this is working correctly? Test
 
 function fetchQuestions() {
   //console.log(`Sorting by ${sortOrder}`);
-  const modle = new Model();
   document.getElementById("questioncount").innerHTML = `${modle.getQuestionCount()} questions`;
   var tbl = document.getElementById("questions");
   var qList = modle.getAllQstns();
@@ -110,7 +109,31 @@ window.onload = function() {
 
 function submitForm() {
   if (checkForm()) {
+    var newqid = parseInt(modle.data.questions[modle.data.questions.length-1].qid.substring(1)) + 1;
+    var tags = document.getElementById("qtags").value.split(" ");
+    var taglist = [];
+    for (let i = 0; i < tags.length; i++) {
+      var tagid = modle.tagExists(tags[i]);
+      if (tagid) taglist.push(tagid);
+      else {
+        var newtid = parseInt(modle.data.tags[modle.data.tags.length-1].tid.substring(1)) + 1;
+        modle.data.tags.push({tid: 't' + newtid, name: tags[i]});
+        taglist.push('t' + newtid);
+      }
+    }
+    modle.data.questions.push({
+      qid: 'q' + newqid,
+      title: document.getElementById("qtitle").value,
+      text: document.getElementById("qtext").value,
+      tagIds: taglist,
+      askedBy : document.getElementById("quser").value,
+      askDate: new Date(),
+      ansIds: [],
+      views: 0,
+    });
+    console.table(modle.data.questions);
     switchToQuestionPage();
+    resetTable();
   } else return false;
 }
 

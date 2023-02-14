@@ -180,4 +180,9 @@ export default class Model {
   findTagName(tagid) {
     return this.data.tags.find(x => x.tid == tagid).name;
   }
+  tagExists(name) {
+    var tagg = this.data.tags.find(x => x.name == name);
+    if (tagg != undefined) return tagg.tid;
+    return undefined;
+  }
 }
