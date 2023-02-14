@@ -138,7 +138,7 @@ function checkForm() {
 
 
   /* Validate Tags */
-  if (/[\w\s]{1,5}/.test(document.getElementById("qtags"))) { /* regex auuuuuggghhhhhhh */
+  if (!/^\w+(\s\w+){0,4}$/.test(document.getElementById("qtags").value)) { /* regex auuuuuggghhhhhhh */
     document.getElementById("qtagserror").innerHTML = "Between 1-5 tags are required!";
     document.getElementById("qtagserror").style.display = "block";
     errFound = true;
