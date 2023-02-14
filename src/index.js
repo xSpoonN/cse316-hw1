@@ -37,11 +37,10 @@ function compareActive(a, b) { //I'm pretty sure this is working correctly? Test
   return 0;
 }
 
-function fetchQuestions() {
+function fetchQuestions(qList = modle.getAllQstns()) {
   //console.log(`Sorting by ${sortOrder}`);
   document.getElementById("questioncount").innerHTML = `${modle.getQuestionCount()} questions`;
   var tbl = document.getElementById("questions");
-  var qList = modle.getAllQstns();
 
   /* Sort Options */
   if (sortOrder == "Newest" || sortOrder == "Unanswered") qList.sort(compareNewest);
@@ -103,9 +102,32 @@ window.onload = function() {
   document.getElementById("unbutt").onclick = setUnanswered;
   document.getElementById("askqbutt").onclick = switchToPostPage;
   document.getElementById("postqbutt").onclick = submitForm;
+
   fetchQuestions();
   switchToQuestionPage();
 };
+
+function checkSearch(event) {
+  if (event.keyCode == 13) {
+    search(document.getElementById("search").value);
+  }
+}
+
+function search(query) {
+  var searchTerms = query.toLowerCase().split(" ");
+  var searchWords = searchTerms.filter(word => !/\[\w+\]/.test(word)); //Words are those that are not surrounded in brackets
+  var searchTags = searchTerms.filter(word => /\[\w+\]/.test(word));
+  const q = modle.data.questions; const t = modle.data.tags;
+  var out = [];
+  for (let i = 0; i < q.length; i++) {
+    if ((searchWords.some(term => q[i].title.toLowerCase().includes(term) || //If the title includes a search term
+        q[i].text.toLowerCase().includes(term))) &&                          //Or the description includes the search term
+        q[i].tagIds.some(tag => searchTags.some(term => term == t.find(x => x.tid == tag).name))) { //AND it has a tag from the list of tags.
+      out.push(q[i]);
+    }
+  }
+  return out;
+}
 
 function submitForm() {
   if (checkForm()) {
