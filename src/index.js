@@ -109,7 +109,12 @@ window.onload = function() {
 
 function checkSearch(event) {
   if (event.keyCode == 13) {
-    search(document.getElementById("search").value);
+    var result = search(document.getElementById("search").value);
+    if (result == []) {
+      document.getElementById("nosearchresults").style.display = "block";
+    } else {
+      fetchQuestions(result);
+    }
   }
 }
 
