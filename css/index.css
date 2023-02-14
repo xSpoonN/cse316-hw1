@@ -122,3 +122,9 @@ body {
     color: white;
     border-color: cornflowerblue;
 }
+
+.errormsg {
+    color:crimson;
+    font-weight:bold;
+    display:none
+}

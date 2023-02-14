@@ -103,10 +103,56 @@ window.onload = function() {
   document.getElementById("activebutt").onclick = setActive;
   document.getElementById("unbutt").onclick = setUnanswered;
   document.getElementById("askqbutt").onclick = switchToPostPage;
-  document.getElementById("postqbutt").onclick = switchToQuestionPage;
+  document.getElementById("postqbutt").onclick = submitForm;
   fetchQuestions();
   switchToQuestionPage();
 };
+
+function submitForm() {
+  if (checkForm()) {
+    switchToQuestionPage();
+  } else return false;
+}
+
+function checkForm() {
+  var errFound = false;
+
+  /* Validate Title */
+  if (document.getElementById("qtitle").value.length > 100) {
+    document.getElementById("qtitleerror").innerHTML = "Title must be 100 characters or less!";
+    document.getElementById("qtitleerror").style.display = "block";
+    errFound = true;
+  } else if (document.getElementById("qtitle").value.length == 0) {
+    document.getElementById("qtitleerror").innerHTML = "A title is required!";
+    document.getElementById("qtitleerror").style.display = "block";
+    errFound = true;
+  } else document.getElementById("qtitleerror").style.display = "none";
+
+
+  /* Vakudate Description */
+  if (document.getElementById("qtext").value.length == 0) {
+    document.getElementById("qtexterror").innerHTML = "A description is required!";
+    document.getElementById("qtexterror").style.display = "block";
+    errFound = true;
+  } else document.getElementById("qtexterror").style.display = "none";
+
+
+  /* Validate Tags */
+  if (/[\w\s]{1,5}/.test(document.getElementById("qtags"))) { /* regex auuuuuggghhhhhhh */
+    document.getElementById("qtagserror").innerHTML = "Between 1-5 tags are required!";
+    document.getElementById("qtagserror").style.display = "block";
+    errFound = true;
+  } else document.getElementById("qtagserror").style.display = "none";
+
+  /* Validate Username */
+  if (document.getElementById("quser").value.length == 0) {
+    document.getElementById("qusererror").innerHTML = "A username is required!";
+    document.getElementById("qusererror").style.display = "block";
+    errFound = true;
+  } else document.getElementById("qusererror").style.display = "none";
+
+  return !errFound;
+}
 
 function switchToPostPage() {
   document.getElementById("content").style.display='none';
