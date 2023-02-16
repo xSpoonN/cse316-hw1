@@ -48,11 +48,13 @@ function fetchQuestions(qList = modle.getAllQstns()) {
   if (sortOrder == "Active") qList.sort(compareActive);
   //console.table(qList);
 
+  tbl.insertRow().innerHTML = '<td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td>';
   /* Question List */
   for (let i = 0; i < qList.length; i++) {
     var question = qList[i];
     if (sortOrder == "Unanswered" && question.ansIds.length != 0) continue;
     var newRow = tbl.insertRow();
+    tbl.insertRow().innerHTML = '<td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td>';
 
     /* Left Column */
     newRow.insertCell(0).innerHTML = `${question.ansIds.length} answers <br>${question.views} views`;
@@ -95,6 +97,13 @@ function fetchQuestions(qList = modle.getAllQstns()) {
       }
     }
   }
+  /* Add a dotted line between every question */
+  var list = tbl.getElementsByTagName("tr");
+  //console.log(list);
+/*   for (let i = 0; i < list.length; i++) {
+    //list[i].style.borderBottom = "1px solid #000000";
+    list[i].className = "questionElement";
+  } */
 }
 
 window.onload = function() {
@@ -112,13 +121,8 @@ window.checkSearch = function checkSearch(event) {
   //console.log("aivslaiuvl");
   if (event.keyCode == 13) {
     var result = search(document.getElementById("search").value);
-    if (result == []) {
-    //console.log("No result");
-      document.getElementById("nosearchresults").style.display = "block";
-    } else {
-      //console.log("Result");
-      resetTable(result);
-    }
+    document.getElementById("nosearchresults").style.display = result.length == 0 ? "block" : "none";
+    resetTable(result);
   }
 }
 

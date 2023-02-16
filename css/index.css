@@ -90,8 +90,13 @@ body {
 }
 
 .questions {
-    border: 1px dotted black;
+    /* border: 1px dotted black; */
+    border-collapse:collapse;
+    padding:10px;
     width: 100%;
+}
+.questionElement{
+    border: 1px dotted black;
 }
 
 #qtitle {
@@ -128,3 +133,4 @@ body {
     font-weight:bold;
     display:none
 }
+
