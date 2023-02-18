@@ -40,7 +40,7 @@ function compareActive(a, b) { //I'm pretty sure this is working correctly? Test
 
 function fetchQuestions(qList = modle.getAllQstns()) {
   //console.log(`Sorting by ${sortOrder}`);
-  document.getElementById("questioncount").innerHTML = `${modle.getQuestionCount()} questions`;
+  document.getElementById("questioncount").innerHTML = `${qList.length} questions`;
   var tbl = document.getElementById("questions");
 
   /* Sort Options */
@@ -111,7 +111,8 @@ window.onload = function() {
   document.getElementById("activebutt").onclick = setActive;
   document.getElementById("unbutt").onclick = setUnanswered;
   document.getElementById("askqbutt").onclick = switchToPostPage;
-  document.getElementById("postqbutt").onclick = submitForm;
+  document.getElementById("postqbutt").onclick = submitQuestion;
+  document.getElementById("postabutt").onclick = submitAnswer;
 
   fetchQuestions();
   switchToQuestionPage();
@@ -145,8 +146,8 @@ function search(query) {
   return out;
 }
 
-function submitForm() {
-  if (checkForm()) {
+function submitQuestion() {
+  if (checkQuestionForm()) {
     var newqid = parseInt(modle.data.questions[modle.data.questions.length-1].qid.substring(1)) + 1;
     var tags = document.getElementById("qtags").value.split(" ");
     var taglist = [];
@@ -175,7 +176,17 @@ function submitForm() {
   } else return false;
 }
 
-function checkForm() {
+function submitAnswer() {
+  if (checkAnswerForm()) {
+    var newqid = parseInt(modle.data.answers[modle.data.answers.length-1].aid.substring(1)) + 1;
+    /* No need for tags section */
+    /* Push the new answer to the modle.data */
+    console.table(modle.data.answers);
+    /* switchToAnswerPage(); */
+  } else return false;
+}
+
+function checkQuestionForm() {
   var errFound = false;
 
   /* Validate Title */
@@ -190,7 +201,7 @@ function checkForm() {
   } else document.getElementById("qtitleerror").style.display = "none";
 
 
-  /* Vakudate Description */
+  /* Validate Description */
   if (document.getElementById("qtext").value.length == 0) {
     document.getElementById("qtexterror").innerHTML = "A description is required!";
     document.getElementById("qtexterror").style.display = "block";
@@ -215,12 +226,63 @@ function checkForm() {
   return !errFound;
 }
 
+function checkAnswerForm() {
+  var errFound = false;
+
+  /* Validate Username */
+  if (document.getElementById("auser").value.length == 0) {
+    document.getElementById("ausererror").innerHTML = "A username is required!";
+    document.getElementById("ausererror").style.display = "block";
+    errFound = true;
+  } else document.getElementById("ausererror").style.display = "none";
+
+
+  /* Validate Description */
+  if (document.getElementById("atext").value.length == 0) {
+    document.getElementById("atexterror").innerHTML = "A description is required!";
+    document.getElementById("atexterror").style.display = "block";
+    errFound = true;
+  } else document.getElementById("atexterror").style.display = "none";
+
+  return !errFound;
+}
+
 function switchToPostPage() {
   document.getElementById("content").style.display='none';
   document.getElementById("askquestion").style.display='block';
+  document.getElementById("answerpage").style.display='none';
+  document.getElementById("newanswer").style.display='none';
+  document.getElementById("alltags").style.display='none';
 }
 
 function switchToQuestionPage() {
   document.getElementById("content").style.display='block';
   document.getElementById("askquestion").style.display='none';
+  document.getElementById("answerpage").style.display='none';
+  document.getElementById("newanswer").style.display='none';
+  document.getElementById("alltags").style.display='none';
+}
+
+function switchToAnswerPage() {
+  document.getElementById("content").style.display='none';
+  document.getElementById("askquestion").style.display='none';
+  document.getElementById("answerpage").style.display='block';
+  document.getElementById("newanswer").style.display='none';
+  document.getElementById("alltags").style.display='none';
+}
+
+function switchToPostAnswerPage() {
+  document.getElementById("content").style.display='none';
+  document.getElementById("askquestion").style.display='none';
+  document.getElementById("answerpage").style.display='none';
+  document.getElementById("newanswer").style.display='block';
+  document.getElementById("alltags").style.display='none';
+}
+
+function switchToAllTagsPage() {
+  document.getElementById("content").style.display='none';
+  document.getElementById("askquestion").style.display='none';
+  document.getElementById("answerpage").style.display='none';
+  document.getElementById("newanswer").style.display='none';
+  document.getElementById("alltags").style.display='block';
 }

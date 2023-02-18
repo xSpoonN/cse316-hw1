@@ -4,5 +4,20 @@ Read the requirements [here](https://docs.google.com/document/d/1hoYYAazg7Mwi15U
 **Remember to list your contribution in the sections shown below before the due date.**
 
 ## Team Member 1 contribution
-
+### Kevin Tao - 170154879 - <kevin.tao@stonybrook.edu>
+> Home Page
+>
+> Post a New Question
+> 
+> Search by Text
+> 
+> Search by Tag
 ## Team Member 2 contribution
+### James Leonardi
+> 
+> 
+> 
+> 
+> 
+> 
+> 

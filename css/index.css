@@ -1,5 +1,5 @@
 /* Add CSS stylesheet */
-body {
+body { /* Applies this font globally */
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -39,7 +39,8 @@ body {
 .sidebutt:hover {
     background-color: cadetblue;
 }
-#activetab {
+
+#questiontab {
     background-color: cadetblue;
 }
 
@@ -56,7 +57,7 @@ body {
     display: inline-block;
 }
 
-.content {
+.content { /* content class is applied to render elements that are not the header or sidebar */
     margin-left: max(20%, 150px);
     padding-top: 90px;
     z-index: 1;
@@ -90,7 +91,6 @@ body {
 }
 
 .questions {
-    /* border: 1px dotted black; */
     border-collapse:collapse;
     padding:10px;
     width: 100%;

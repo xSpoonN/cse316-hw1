@@ -13,8 +13,8 @@
 
   <div id="main" class="main">
     <div id="sidebar">
-      <a class="sidebutt" id="activetab">Questions</a> <!--Href to get to different pages-->
-      <a class="sidebutt">Tags</a>
+      <a class="sidebutt" id="questiontab">Questions</a> <!--Href to get to different pages-->
+      <a class="sidebutt" id="tagtab">Tags</a>
     </div>
     <div id="content" class="content">
       <p class="contentheader">All Questions</p>
@@ -29,7 +29,6 @@
       <p id="nosearchresults" style="display:none;font-weight:bold">No Questions Found.</p>
     </div>
     <div id="askquestion" class="content">
-      <!-- The idea is to hide the previous section on "Ask Question" -->
       <h2>Question Title*</h2>
       <p style="font-style:italic">Limit title to 100 characters or less</p>
       <input type="text" name="questiontitle" id="qtitle" maxlength="100" required>
@@ -52,6 +51,25 @@
 
       <input type="button" id="postqbutt" value="Post Question">
       <p style="text-align:right">* indicates mandatory fields</p>
+    </div>
+    <div id="answerpage" class="content">
+
+    </div>
+    <div id="newanswer" class="content">
+      <h2>Username*</h2>
+      <input type="text" name="answeruser" id="auser" maxlength="100" required>
+      <p class="errormsg" id="ausererror"></p>
+
+      <h2>Answer Text*</h2>
+      <textarea name="answerdesc" id="atext" cols="80" rows="10"></textarea>
+      <p class="errormsg" id="atexterror"></p>
+      <br><br><br><br><br>
+
+      <input type="button" id="postabutt" value="Post Answer">
+      <p style="text-align:right">* indicates mandatory fields</p>
+    </div>
+    <div id="alltags" class="content">
+
     </div>
   </div>
 </body>
