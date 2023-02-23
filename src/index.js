@@ -61,33 +61,34 @@ function fetchQuestions(qList = modle.getAllQstns()) {
       + `${modle.findTagName(question.tagIds[j])}</button>`;
     }
 
-    /* Right Column */
+    /* Right Column */ /* The date is manually set here for testing purposes */
     var now = new Date('February 12, 2023 19:53:46'); var askDate = question.askDate;
     var rightCell = newRow.insertCell(2);
     rightCell.innerHTML = `${question.askedBy} asked `;
-    if (askDate.getFullYear() < now.getFullYear()) { //Last Year
-      rightCell.innerHTML += `${askDate.toDateString().substring(4)} at 
-      ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats to xx:xx
-      `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
-    } else if (askDate.getMonth() < now.getMonth() || askDate.getDate() != now.getDate()) { //Diff Day
-      rightCell.innerHTML += `${askDate.toDateString().substring(4,askDate.toDateString().length-5)} at
-      ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats to xx:xx
-      `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
-    } else {
-      /* Reminder to fix this to be more accurate. Currently it just takes the day/hour/minute value 
-       * instead of actually computing how many days/hours/minutes there are between the two dates */
-      if (now.getHours() - askDate.getHours() == 1) { //Exactly 1 hour ago
-        rightCell.innerHTML += `1 hour ago.`;
-      } else if (now.getHours() - askDate.getHours() > 0) { //Same day
-        rightCell.innerHTML += `${now.getHours() - askDate.getHours()} hours ago.`;
-      } else if (now.getMinutes() - askDate.getMinutes() == 1) { //Exactly one minute ago
+    
+    if ((now.getTime() - askDate.getTime())/1000/60/60/24 < 24) { //Last 24 hours
+      if ((now.getTime() - askDate.getTime())/1000/60 == 1) { /* Exactly one minute ago */
         rightCell.innerHTML += `1 minute ago.`;
-      } else if (now.getMinutes() - askDate.getMinutes() > 0) { //Same hour
-        rightCell.innerHTML += `${now.getMinutes() - askDate.getMinutes()} minutes ago.`;
-      } else if (now.getSeconds() - askDate.getSeconds() == 1) { //Exactly one second ago
+      } else if ((now.getTime() - askDate.getTime())/1000 == 1) { /* Exactly one second ago */
         rightCell.innerHTML += `1 second ago.`;
-      } else { //Same minute
-        rightCell.innerHTML += `${now.getSeconds() - askDate.getSeconds()} seconds ago.`;
+      } else if ((now.getTime() - askDate.getTime())/1000/60/60 == 1) { /* Exactly one hour ago */
+        rightCell.innerHTML += `1 hour ago.`;
+      } else if ((now.getTime() - askDate.getTime())/1000/60 < 1) { /* Less than one minute ago */
+        rightCell.innerHTML += `${Math.floor(((now.getTime() - askDate.getTime())/1000))} seconds ago.`;
+      } else if ((now.getTime() - askDate.getTime())/1000/60/60 < 1) { /* Less than one hour ago */
+        rightCell.innerHTML += `${Math.floor(((now.getTime() - askDate.getTime())/1000/60))} minutes ago.`;
+      } else { /* More than an hour ago */
+        rightCell.innerHTML += `${Math.floor(((now.getTime() - askDate.getTime())/1000/60/60))} hours ago.`;
+      }
+    } else {
+      if ((now.getTime() - askDate.getTime())/1000/60/60/24/365 < 1) { /* Less than a year ago */
+        rightCell.innerHTML += `${askDate.toDateString().substring(4,askDate.toDateString().length-5)} at
+        ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats time to xx:xx
+        `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
+      } else {
+        rightCell.innerHTML += `${askDate.toDateString().substring(4)} at 
+        ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats time to xx:xx
+        `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
       }
     }
   }
@@ -105,7 +106,7 @@ window.onload = function() {
   switchToQuestionPage();
 };
 
-window.checkSearch = function checkSearch(event) {
+window.checkSearch = function checkSearch(event) { /* This needs to be window.checkSearch so its callable in index.html */
   if (event.keyCode == 13) { /* keyCode 13 = Enter key */
     var result = search(document.getElementById("search").value);
     document.getElementById("nosearchresults").style.display = result.length == 0 ? "block" : "none";
@@ -120,11 +121,12 @@ function search(query) {
   searchTags = searchTags.map(tag => tag.replace(/\[|\]/g,"")); /* Deletes the brackets from each tag */
   const q = modle.data.questions; const t = modle.data.tags; var out = [];
   for (let i = 0; i < q.length; i++) {
-    if (((searchWords.some(term => q[i].title.toLowerCase().includes(term) || //If the title includes a search term
-        q[i].text.toLowerCase().includes(term))) || //Or the description includes the search term or is empty
-        searchWords.length == 0) && //Or there is no search word           AND
-        (q[i].tagIds.some(tag => searchTags.some(term => term == t.find(x => x.tid == tag).name)) || //it has a tag from the list of tags.
-        searchTags.length == 0)) { //Or there are no tags searched
+    if (((searchWords.some(term => q[i].title.toLowerCase().includes(term) || //Title includes a search term
+        q[i].text.toLowerCase().includes(term))) || //Description includes the search term
+        searchWords.length == 0) //Or there are no search words
+        && /* AND */
+        (q[i].tagIds.some(tag => searchTags.some(term => term == t.find(x => x.tid == tag).name)) || //Contains search tag.
+        searchTags.length == 0)) { //Or there are no search tags
       out.push(q[i]);
     }
   }
