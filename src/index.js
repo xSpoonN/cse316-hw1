@@ -55,10 +55,19 @@ function fetchQuestions(qList = modle.getAllQstns()) {
 
     /* Middle Column */
     var midCell = newRow.insertCell(1);
-    midCell.innerHTML = `${question.title} <br>`;
+    var qtitle = document.createElement("a");
+    qtitle.setAttribute("class", "qlink");
+    qtitle.textContent = question.title;
+    qtitle.onclick = showAnswers(question.qid);
+    midCell.appendChild(qtitle);
+    
+    // Setup tags
+    midCell.appendChild(document.createElement("br"));
     for (let j = 0; j < question.tagIds.length; j++) { /* Renders each tag as a button thing */
-      midCell.innerHTML += '<button style="color:white;background-color:grey;display:inline-block;">' 
-      + `${modle.findTagName(question.tagIds[j])}</button>`;
+      var tag = document.createElement("button");
+      tag.setAttribute("style", "color:white;background-color:grey;display:inline-block;");
+      tag.textContent = modle.findTagName(question.tagIds[j]);
+      midCell.appendChild(tag);
     }
 
     /* Right Column */ /* The date is manually set here for testing purposes */
@@ -111,6 +120,14 @@ window.checkSearch = function checkSearch(event) { /* This needs to be window.ch
     var result = search(document.getElementById("search").value);
     document.getElementById("nosearchresults").style.display = result.length == 0 ? "block" : "none";
     resetTable(result);
+  }
+}
+
+/* Callback function for swapping to the answer page of a given question */
+function showAnswers(questionId) {
+  return function() {
+    document.getElementById("answerpage").innerHTML = `<p>${questionId}</p>`;
+    switchToAnswerPage();
   }
 }
 

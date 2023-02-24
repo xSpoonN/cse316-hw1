@@ -71,6 +71,16 @@ export default class Model {
                     askDate: new Date('February 12, 2023 19:53:39'),
                     ansIds: [],
                     views: 1,
+                  },
+                  {
+                    qid: 'q8',
+                    title: 'chocolate chocolate chip',
+                    text: 'jack',
+                    tagIds: ['t8'],
+                    askedBy : 'bidenator',
+                    askDate: new Date('February 23, 2023 19:53:19'),
+                    ansIds: [],
+                    views: 5888888888,
                   }
                 ],
       tags: [
@@ -170,6 +180,9 @@ export default class Model {
   }
   getAllAnswers() {
     return this.data.answers;
+  }
+  getAnswersByTag(tag) {
+    return this.data.answers.filter(item => item.aid === tag).sort((a, b) => a.ansDate < b.ansDate);
   }
   getAllTags() {
     return this.data.tags;

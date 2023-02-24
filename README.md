@@ -13,7 +13,7 @@ Read the requirements [here](https://docs.google.com/document/d/1hoYYAazg7Mwi15U
 > 
 > Search by Tag
 ## Team Member 2 contribution
-### James Leonardi
+### James Leonardi - 113332225 - <james.leonardi@stonybrook.edu>
 > 
 > 
 > 
