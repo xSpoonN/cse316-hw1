@@ -121,7 +121,6 @@ export default class Model {
           name: 'mongodb',
         }
       ],
-
       answers: [
         {
           aid: 'a1',
@@ -180,6 +179,9 @@ export default class Model {
   }
   getQuestionTitle(id) {
     return this.data.questions.find(item => item.qid == id).title;
+  }
+  getQuestionText(id) {
+    return this.data.questions.find(item => item.qid === id).text;
   }
   getAllAnswers() {
     return this.data.answers;
