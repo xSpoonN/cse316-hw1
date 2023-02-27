@@ -125,9 +125,24 @@ function showAnswers(questionId) {
   return function() {
     var answers = modle.getAnswersByQID(questionId);
     document.getElementById("ap_questiontitle").innerHTML = `<b>${modle.getQuestionTitle(questionId)}</b>`;
+    document.getElementById("ap_questiontext").innerHTML = `${modle.getQuestionText(questionId)}`;
     document.getElementById("ap_answercount").innerHTML = `${answers.length} answers`;
     document.getElementById("ap_views").innerHTML = `<b>${modle.getViews(questionId)} views</b>`;
-    //document.getElementById("ap_")
+    var answertable = document.getElementById("ap_answers");
+    //var hrow = answertable.insertRow();
+    //hrow.innerHTML = `<td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td>`;
+    if (answers.length === 0) {
+      document.getElementById("ap_noanswers").style.display = 'block';
+    } else {
+      answers.forEach((answer) => {
+        // Todo: make this dotted lines
+        var row = answertable.insertRow();
+        var textcol = row.insertCell(0);
+        var creditcol = row.insertCell(1);
+        textcol.innerHTML = answer.text;
+        creditcol.innerHTML = "<b>" + answer.ansBy + "</b> answered " +  answer.ansDate.toLocaleDateString();
+      });
+    }
     switchToAnswerPage();
   }
 }
