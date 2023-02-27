@@ -178,11 +178,17 @@ export default class Model {
   getAllQstns() {
     return this.data.questions;
   }
+  getQuestionTitle(id) {
+    return this.data.questions.find(item => item.qid == id).title;
+  }
   getAllAnswers() {
     return this.data.answers;
   }
-  getAnswersByTag(tag) {
-    return this.data.answers.filter(item => item.aid === tag).sort((a, b) => a.ansDate < b.ansDate);
+  getAnswersByQID(questionId) {
+    return this.data.answers.filter(ans => this.data.questions.find(q => q.qid === questionId).ansIds.includes(ans.aid)).sort((a, b) => a.ansDate < b.ansDate);
+  }
+  getViews(questionId) {
+    return this.data.questions.find(item => item.qid === questionId).views;
   }
   getAllTags() {
     return this.data.tags;

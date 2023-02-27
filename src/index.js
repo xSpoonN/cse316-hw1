@@ -39,6 +39,7 @@ function fetchQuestions(qList = modle.getAllQstns()) {
   if (sortOrder == "Active") qList.sort(compareActive);
 
   /* This garbage handles the dotted breaks between questions */
+  /* Todo: CSS! */
   tbl.insertRow().innerHTML = '<td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td>';
 
   /* Question List */
@@ -126,7 +127,11 @@ window.checkSearch = function checkSearch(event) { /* This needs to be window.ch
 /* Callback function for swapping to the answer page of a given question */
 function showAnswers(questionId) {
   return function() {
-    document.getElementById("answerpage").innerHTML = `<p>${questionId}</p>`;
+    var answers = modle.getAnswersByQID(questionId);
+    document.getElementById("ap_questiontitle").innerHTML = `<b>${modle.getQuestionTitle(questionId)}</b>`;
+    document.getElementById("ap_answercount").innerHTML = `${answers.length} answers`;
+    document.getElementById("ap_views").innerHTML = `<b>${modle.getViews(questionId)} views</b>`;
+    //document.getElementById("ap_")
     switchToAnswerPage();
   }
 }

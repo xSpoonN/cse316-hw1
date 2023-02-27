@@ -20,6 +20,8 @@
       <p class="contentheader">All Questions</p>
       <button id="askqbutt">Ask Question</button>
       <br>
+
+      <!-- Questions Page -->
       <p id="questioncount">x questions</p>
       <button id="newbutt" class="questionsort">Newest</button>
       <button id="activebutt" class="questionsort">Active</button>
@@ -28,6 +30,8 @@
       <table id="questions" class="questions"></table>
       <p id="nosearchresults" style="display:none;font-weight:bold">No Questions Found.</p>
     </div>
+
+    <!-- Ask Question Form -->
     <div id="askquestion" class="content">
       <h2>Question Title*</h2>
       <p style="font-style:italic">Limit title to 100 characters or less</p>
@@ -52,9 +56,19 @@
       <input type="button" id="postqbutt" value="Post Question">
       <p style="text-align:right">* indicates mandatory fields</p>
     </div>
+
+    <!-- Answer Page -->
     <div id="answerpage" class="content">
-      <!-- Need to implement -->
+      <p id="ap_answercount"></p>
+      <p id="ap_questiontitle"></p>
+      <button id="askqbutt">Ask Question</button>
+      <br>
+      <p id="ap_views"></p>
+      <table id="ap_answers" class="answerlist"></table>
+      <p id="nosearchresults" style="display:none;font-weight:bold">No Questions Found.</p>
     </div>
+
+    <!-- Answer Question Form -->
     <div id="newanswer" class="content">
       <h2>Username*</h2>
       <input type="text" name="answeruser" id="auser" maxlength="100" required>
@@ -68,6 +82,8 @@
       <input type="button" id="postabutt" value="Post Answer">
       <p style="text-align:right">* indicates mandatory fields</p>
     </div>
+
+    <!-- All Tags Page -->
     <div id="alltags" class="content">
       <!-- Need to implement -->
     </div>
