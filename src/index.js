@@ -136,7 +136,7 @@ function showAnswers(questionId) {
     //var hrow = answertable.insertRow();
     //hrow.innerHTML = `<td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td>`;
     if (answers.length === 0) {
-      document.getElementById("ap_noanswers").style.display = 'block';
+      //document.getElementById("ap_noanswers").style.display = 'block';
     } else {
       answers.forEach((answer) => {
         // Todo: make this dotted lines
