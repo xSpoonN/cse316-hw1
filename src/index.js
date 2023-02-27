@@ -38,18 +38,14 @@ function fetchQuestions(qList = modle.getAllQstns()) {
   if (sortOrder == "Newest" || sortOrder == "Unanswered") qList.sort((a, b) => b.askDate - a.askDate);
   if (sortOrder == "Active") qList.sort(compareActive);
 
-  /* This garbage handles the dotted breaks between questions */
-  /* Todo: CSS! */
-  tbl.insertRow().innerHTML = '<td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td>';
+  /* This line is needed to have a dotted line on top */
+  tbl.insertRow();
 
   /* Question List */
   for (let i = 0; i < qList.length; i++) {
     var question = qList[i];
     if (sortOrder == "Unanswered" && question.ansIds.length != 0) continue;
     var newRow = tbl.insertRow();
-
-    /* This garbage handles the dotted breaks between questions */
-    tbl.insertRow().innerHTML = '<td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td>';
 
     /* Left Column */
     newRow.insertCell(0).innerHTML = `${question.ansIds.length} answers <br>${question.views} views`;

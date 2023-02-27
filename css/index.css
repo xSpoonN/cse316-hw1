@@ -105,6 +105,15 @@ body { /* Applies this font globally */
     padding:10px;
     width: 100%;
 }
+
+tr {
+    border-bottom: 1px dotted black;
+}
+
+td {
+    padding: 15px;
+}
+
 .questionElement{
     border: 1px dotted black;
 }
