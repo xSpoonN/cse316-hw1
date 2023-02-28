@@ -8,6 +8,7 @@ export function showAnswers(questionId, addView) {
       if (addView) modle.addViews(questionId);
       /* Setup page information */
       lastViewedQuestion = questionId;
+      console.log(questionId);
       var answers = modle.getAnswersByQID(questionId);
       document.getElementById("ap_questiontitle").innerHTML = `<b>${modle.getQuestionTitle(questionId)}</b>`;
       document.getElementById("ap_questiontext").innerHTML = `${modle.getQuestionText(questionId)}`;

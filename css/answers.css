@@ -13,6 +13,7 @@
 #ap_answercount {
     text-align: left;
     display: inline-block;
+    width: 20%;
 }
 
 #ap_views {
@@ -20,6 +21,7 @@
     vertical-align: middle;
     display: inline-block;
     width: 10%;
+    height: 10%;
 }
 
 #ap_questiontext {

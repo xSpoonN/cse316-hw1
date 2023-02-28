@@ -4,7 +4,9 @@ import { resetTable } from './questions.js';
 export function submitQuestion() {
     if (checkQuestionForm()) {
       /* Generates the next question id */
+      // todo: move this into modle
       var newqid = parseInt(modle.data.questions[modle.data.questions.length-1].qid.substring(1)) + 1;
+      console.log(newqid);
       var tags = document.getElementById("qtags").value.split(" ");
       var taglist = [];
       for (let i = 0; i < tags.length; i++) {
