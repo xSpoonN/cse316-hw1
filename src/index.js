@@ -109,9 +109,12 @@ window.onload = function() {
   document.getElementById("newbutt").onclick = setNewest;
   document.getElementById("activebutt").onclick = setActive;
   document.getElementById("unbutt").onclick = setUnanswered;
-  document.getElementById("askqbutt").onclick = switchToPostPage;
+  //document.getElementById("askqbutt").onclick = switchToPostPage;
   document.getElementById("postqbutt").onclick = submitQuestion;
   document.getElementById("postabutt").onclick = submitAnswer;
+  Array.from(document.getElementsByClassName("askqbutt")).forEach(butt => {
+    butt.onclick = switchToPostPage;
+  });
 
   fetchQuestions();
   switchToQuestionPage();
@@ -136,10 +139,10 @@ function showAnswers(questionId) {
     document.getElementById("ap_views").innerHTML = `<b>${modle.getViews(questionId)} views</b>`;
     document.getElementById("ap_askedby").innerHTML = `asked by <b>${modle.getWhoAsked(questionId)}</b>`
     var answertable = document.getElementById("ap_answers");
+    while (answertable.rows.length > 0) answertable.deleteRow(0);
     /* Add empty row for dotted line above first question */
     var emptyrow = answertable.insertRow();
     emptyrow.setAttribute("class", "aRow");
-
     if (answers.length === 0) {
       document.getElementById("ap_noanswers").style.display = 'block';
     } else {

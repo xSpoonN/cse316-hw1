@@ -31,12 +31,6 @@ body { /* Applies this font globally */
     background-color: lavenderblush;
 }
 
-.qlink {
-    text-decoration: none;
-    color: blue;
-    cursor: pointer;
-}
-
 .sidebutt {
     color: darkslateblue;
     display: block;
@@ -77,4 +71,16 @@ body { /* Applies this font globally */
     color:crimson;
     font-weight:bold;
     display:none
+}
+
+.askqbutt {
+    padding: 6px;
+    display: inline-block;
+    position: fixed;
+    font-size: medium;
+    background-color: cornflowerblue;
+    color: white;
+    border-color: cornflowerblue;
+    right: 20px;
+    top: 120px;
 }
