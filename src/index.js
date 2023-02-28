@@ -77,7 +77,7 @@ function fetchQuestions(qList = modle.getAllQstns()) {
     rightCell.setAttribute("class","qTD");
     rightCell.innerHTML = `${question.askedBy} asked `;
     
-    modle.formatDate(askDate, rightCell, now);
+    rightCell.innerHTML += modle.formatDate(askDate, now);
   }
 }
 
