@@ -17,6 +17,7 @@
 
 #ap_views {
     text-align: left;
+    vertical-align: middle;
     display: inline-block;
     width: 15%;
 }
@@ -30,7 +31,7 @@
 #ap_askedby {
     text-align: left;
     display: inline-block;
-    width: 15%;
+    width: 10%;
 }
 
 .aRow {

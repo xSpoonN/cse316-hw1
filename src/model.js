@@ -81,6 +81,16 @@ export default class Model {
                     askDate: new Date('February 23, 2023 19:53:19'),
                     ansIds: [],
                     views: 5888888888,
+                  },
+                  {
+                    qid: 'q9',
+                    title: 'How do I kill a child and make sure they are dead?',
+                    text: 'I am writing a C program that deals with child processes, and I need to kill the spawned processes. How do I go about this?',
+                    tagIds: ['t8'],
+                    askedBy : 'jason huh',
+                    askDate: new Date('February 23, 2023 19:53:19'),
+                    ansIds: [],
+                    views: 4,
                   }
                 ],
       tags: [
@@ -182,6 +192,9 @@ export default class Model {
   }
   getQuestionText(id) {
     return this.data.questions.find(item => item.qid === id).text;
+  }
+  getWhoAsked(id) {
+    return this.data.questions.find(item => item.qid === id).askedBy;
   }
   getAllAnswers() {
     return this.data.answers;
