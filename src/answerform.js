@@ -1,10 +1,10 @@
 import { modle, showPage } from './index.js';
-import { lastViewedQuestion } from './answers.js';
+import { lastViewedQuestion, showAnswers } from './answers.js';
 
 export function showAnswerForm() {
     document.getElementById("auser").value = "";
     document.getElementById("atext").value = "";
-    switchToPostAnswerPage();
+    showPage("answerform");
 }
 
 export function submitAnswer() {

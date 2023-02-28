@@ -24,6 +24,7 @@ export function search(query) {
     var searchWords = searchTerms.filter(word => !/^\[\S+\]$/.test(word)); //Words are those that are not surrounded in brackets
     var searchTags = searchTerms.filter(word => /^\[\S+\]$/.test(word)); /* Tests for [x] for tags */
     searchTags = searchTags.map(tag => tag.replace(/\[|\]/g,"")); /* Deletes the brackets from each tag */
+    //todo: modle.getQuestions()? modle.getAllTags()?
     const q = modle.data.questions; const t = modle.data.tags; var out = [];
     for (let i = 0; i < q.length; i++) {
       if (((searchWords.some(term => q[i].title.toLowerCase().includes(term) || //Title includes a search term

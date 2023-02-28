@@ -1,4 +1,5 @@
 import { modle, showPage } from './index.js';
+import { resetTable } from './questions.js';
 
 export function submitQuestion() {
     if (checkQuestionForm()) {
@@ -11,10 +12,12 @@ export function submitQuestion() {
         if (tagid) taglist.push(tagid); /* If the tag already exists, don't make a new one */
         else { /* Generates a new tag with the next id */
           var newtid = parseInt(modle.data.tags[modle.data.tags.length-1].tid.substring(1)) + 1;
+          //todo: move this into model.js
           modle.data.tags.push({tid: 't' + newtid, name: tags[i]});
           taglist.push('t' + newtid);
         }
       }
+      //todo: move this into model.js
       modle.data.questions.push({
         qid: 'q' + newqid,
         title: document.getElementById("qtitle").value,
@@ -30,14 +33,14 @@ export function submitQuestion() {
       resetTable();
       return true;
     } else return false;
-  }
+}
 
 export function showQuestionForm() {
     document.getElementById("qtitle").value = "";
     document.getElementById("qtext").value = "";
     document.getElementById("qtags").value = "";
     document.getElementById("quser").value = "";
-    switchToPostPage();
+    showPage("questionform");
 }
 
 function checkQuestionForm() { /* Validates the question form */
