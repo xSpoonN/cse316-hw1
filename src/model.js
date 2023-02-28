@@ -229,4 +229,31 @@ export default class Model {
     if (tagg != undefined) return tagg.tid;
     return undefined;
   }
+  formatDate(now, askDate, rightCell) {
+    if ((now.getTime() - askDate.getTime())/1000/60/60/24 < 24) { //Last 24 hours
+      if ((now.getTime() - askDate.getTime())/1000/60 == 1) { /* Exactly one minute ago */
+        rightCell.innerHTML += `1 minute ago.`;
+      } else if ((now.getTime() - askDate.getTime())/1000 == 1) { /* Exactly one second ago */
+        rightCell.innerHTML += `1 second ago.`;
+      } else if ((now.getTime() - askDate.getTime())/1000/60/60 == 1) { /* Exactly one hour ago */
+        rightCell.innerHTML += `1 hour ago.`;
+      } else if ((now.getTime() - askDate.getTime())/1000/60 < 1) { /* Less than one minute ago */
+        rightCell.innerHTML += `${Math.floor(((now.getTime() - askDate.getTime())/1000))} seconds ago.`;
+      } else if ((now.getTime() - askDate.getTime())/1000/60/60 < 1) { /* Less than one hour ago */
+        rightCell.innerHTML += `${Math.floor(((now.getTime() - askDate.getTime())/1000/60))} minutes ago.`;
+      } else { /* More than an hour ago */
+        rightCell.innerHTML += `${Math.floor(((now.getTime() - askDate.getTime())/1000/60/60))} hours ago.`;
+      }
+    } else {
+      if ((now.getTime() - askDate.getTime())/1000/60/60/24/365 < 1) { /* Less than a year ago */
+        rightCell.innerHTML += `${askDate.toDateString().substring(4,askDate.toDateString().length-5)} at
+        ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats time to xx:xx
+        `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
+      } else {
+        rightCell.innerHTML += `${askDate.toDateString().substring(4)} at 
+        ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats time to xx:xx
+        `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
+      }
+    }
+  }
 }
