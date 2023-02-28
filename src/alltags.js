@@ -1,0 +1,1 @@
+import { modle, showPage } from './index.js';
