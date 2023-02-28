@@ -113,7 +113,7 @@ function showAnswers(questionId) {
     document.getElementById("ap_questiontext").innerHTML = `${modle.getQuestionText(questionId)}`;
     document.getElementById("ap_answercount").innerHTML = `${answers.length} answers`;
     document.getElementById("ap_views").innerHTML = `<b>${modle.getViews(questionId)} views</b>`;
-    document.getElementById("ap_askedby").innerHTML = `asked by <b>${modle.getWhoAsked(questionId)}</b>`
+    document.getElementById("ap_askedby").innerHTML = `asked by <b>${modle.getWhoAsked(questionId)}</b> ${modle.formatDate(modle.getAskDate(questionId))}`
     var answertable = document.getElementById("ap_answers");
     while (answertable.rows.length > 0) answertable.deleteRow(0);
     /* Add empty row for dotted line above first question */

@@ -210,6 +210,9 @@ export default class Model {
   getWhoAsked(id) {
     return this.data.questions.find(item => item.qid === id).askedBy;
   }
+  getAskDate(id) {
+    return this.data.questions.find(item => item.qid === id).askDate;
+  }
   getAllAnswers() {
     return this.data.answers;
   }
@@ -233,7 +236,7 @@ export default class Model {
     if (tagg != undefined) return tagg.tid;
     return undefined;
   }
-  formatDate(askDate, now = Date()) {
+  formatDate(askDate, now = new Date()) {
     if ((now.getTime() - askDate.getTime())/1000/60/60/24 < 24) { //Last 24 hours
       if ((now.getTime() - askDate.getTime())/1000/60 == 1) { /* Exactly one minute ago */
         return `1 minute ago.`;
