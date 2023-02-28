@@ -247,7 +247,8 @@ export default class Model {
   }
 
   addAnswer(questionId, author, text, time = new Date()) {
-    var newaid = parseInt(this.data.answers[this.data.answers.length-1].aid.substring(1)) + 1;
+    var sorted = this.data.answers.sort((a, b) => a.aid.substring(1) - b.aid.substring(1));
+    var newaid = parseInt(sorted[sorted.length-1].aid.substring(1)) + 1;
     this.data.answers.push({
       aid: 'a' + newaid,
       text: text,
