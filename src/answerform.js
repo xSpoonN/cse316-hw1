@@ -10,7 +10,7 @@ export function showAnswerForm() {
 export function submitAnswer() {
     if (checkAnswerForm()) {
       modle.addAnswer(lastViewedQuestion, document.getElementById("auser").value, document.getElementById("atext").value);
-      console.table(modle.data.answers);
+      /* console.table(modle.data.answers); */
       showAnswers(lastViewedQuestion, false)();
       return true;
     } else return false;

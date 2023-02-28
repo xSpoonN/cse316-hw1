@@ -1,9 +1,30 @@
-.tagbox {
-    display: inline-block;
-    width: 20%;
-    height: 15%;
+#tagcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10%;
+    grid-auto-rows: minmax(100px, auto);
+    margin-right:5%;
+    /* width: 20%;
+    height: 15%; */
+}
+.tagbox { 
     border: 1px dotted black;
-    margin: 5%;
+    padding:5px;
     text-align: center;
     font-size: 24px;
+}
+
+#t_alltags {
+    font-size: x-large;
+    font-weight: bold;
+    display: inline-block;
+    text-align:center;
+    width:50%;
+}
+
+#t_tagcount {
+    font-size: large;
+    font-weight: bold;
+    display: inline-block;
+    width:25%;
 }
