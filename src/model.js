@@ -242,6 +242,10 @@ export default class Model {
     return this.data.tags.find(x => x.tid == tagid).name;
   }
 
+  addViews(questionId, amount = 1) {
+    this.data.questions.find(item => item.qid === questionId).views += amount;
+  }
+
   addAnswer(questionId, author, text, time = new Date()) {
     var newaid = parseInt(this.data.answers[this.data.answers.length-1].aid.substring(1)) + 1;
     this.data.answers.push({

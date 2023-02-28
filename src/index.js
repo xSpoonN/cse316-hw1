@@ -60,7 +60,7 @@ function fetchQuestions(qList = modle.getAllQstns()) {
     var qtitle = document.createElement("a");
     qtitle.setAttribute("class", "qlink");
     qtitle.textContent = question.title;
-    qtitle.onclick = showAnswers(question.qid);
+    qtitle.onclick = showAnswers(question.qid, true);
     midCell.appendChild(qtitle);
     
     // Setup tags
@@ -115,8 +115,9 @@ window.checkSearch = function checkSearch(event) { /* This needs to be window.ch
 }
 
 /* Callback function for swapping to the answer page of a given question */
-function showAnswers(questionId) {
+function showAnswers(questionId, addView) {
   return function() {
+    if (addView) modle.addViews(questionId);
     /* Setup page information */
     lastViewedQuestion = questionId;
     var answers = modle.getAnswersByQID(questionId);
@@ -219,7 +220,7 @@ function submitAnswer() {
   if (checkAnswerForm()) {
     modle.addAnswer(lastViewedQuestion, document.getElementById("auser").value, document.getElementById("atext").value);
     console.table(modle.data.answers);
-    showAnswers(lastViewedQuestion)();
+    showAnswers(lastViewedQuestion, false)();
     return true;
   } else return false;
 }
