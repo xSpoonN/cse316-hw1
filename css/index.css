@@ -34,19 +34,23 @@ body { /* Applies this font globally */
 .qlink {
     text-decoration: none;
     color: blue;
+    cursor: pointer;
 }
 
 .sidebutt {
     color: darkslateblue;
     display: block;
+    margin-top: 20px;
+    padding:2px;
+    cursor:pointer;
 }
 
 .sidebutt:hover {
-    background-color: cadetblue;
+    background-color: rgb(189, 189, 189);
 }
 
 #questiontab {
-    background-color: cadetblue;
+    background-color: rgb(189, 189, 189);
 }
 
 #search {
@@ -60,6 +64,7 @@ body { /* Applies this font globally */
 
 #title {
     display: inline-block;
+    cursor:progress;
 }
 
 .content { /* content class is applied to render elements that are not the header or sidebar */
