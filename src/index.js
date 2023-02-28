@@ -128,12 +128,13 @@ function showAnswers(questionId) {
     document.getElementById("ap_questiontext").innerHTML = `${modle.getQuestionText(questionId)}`;
     document.getElementById("ap_answercount").innerHTML = `${answers.length} answers`;
     document.getElementById("ap_views").innerHTML = `<b>${modle.getViews(questionId)} views</b>`;
-    var answertable = document.getElementById("ap_answers");
+    var answertable = document.getElementById("ap_table");
     //var hrow = answertable.insertRow();
     //hrow.innerHTML = `<td><hr style="width:100%;border-top:dotted 1px"></td><td><hr style="width:100%;border-top:dotted 1px"></td>`;
     if (answers.length === 0) {
       document.getElementById("ap_noanswers").style.display = 'block';
     } else {
+      document.getElementById("ap_noanswers").style.display = 'none';
       answers.forEach((answer) => {
         // Todo: make this dotted lines
         var row = answertable.insertRow();
