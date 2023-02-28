@@ -86,10 +86,10 @@ export default class Model {
                     qid: 'q9',
                     title: 'How do I kill a child and make sure they are dead?',
                     text: 'I am writing a C program that deals with child processes, and I need to kill the spawned processes. How do I go about this?',
-                    tagIds: ['t8'],
+                    tagIds: ['t10'],
                     askedBy : 'jason huh',
                     askDate: new Date('February 23, 2023 19:53:19'),
-                    ansIds: [],
+                    ansIds: ['a9'],
                     views: 4,
                   }
                 ],
@@ -129,6 +129,10 @@ export default class Model {
         {
           tid: 't9',
           name: 'mongodb',
+        },
+        {
+          tid: 't10',
+          name: 'C',
         }
       ],
       answers: [
@@ -178,6 +182,12 @@ export default class Model {
           aid: 'a8',
           text: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
           ansBy: 'aaaaaaaaaaaaaaaaaa',
+          ansDate: new Date('January 12, 2023 15:11:24')
+        },
+        {
+          aid: 'a9',
+          text: 'what the hell is wrong with you',
+          ansBy: 'dom',
           ansDate: new Date('January 12, 2023 15:11:24')
         }
       ]
