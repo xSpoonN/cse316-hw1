@@ -12,7 +12,9 @@ export function submitQuestion() {
         if (tagid) taglist.push(tagid); /* If the tag already exists, don't make a new one */
         else { /* Generates a new tag with the next id */
           /* modle.addTag(tags[i]); */
-          taglist.push('t' + modle.addTag(tags[i]));
+          taglist.push(modle.addTag(tags[i]));
+          console.log(taglist);
+          console.log(modle.getAllTags());
         }
       }
       //todo: move this into model.js

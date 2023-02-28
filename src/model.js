@@ -239,6 +239,7 @@ export default class Model {
   }
 
   findTagName(tagid) {
+    /* console.log(this.data.tags); */
     return this.data.tags.find(x => x.tid == tagid).name;
   }
 
@@ -250,10 +251,11 @@ export default class Model {
     if (this.data.answers.length == 0) {
       var newaid = "a1";
     } else {
-      var newaid = "a" + (parseInt(this.data.answers.reduce((max, a) => max.aid > a.aid ? max : a).aid.substring(1)) + 1);
+      var newaid = "a" + (parseInt(this.data.answers.reduce((max, a) => parseInt(max.aid.substring(1)) > parseInt(a.aid.substring(1)) ? max : a).aid.substring(1)) + 1);
     }
+    console.log(`New AID: ${newaid}`);
     this.data.answers.push({
-      aid: 'a' + newaid,
+      aid: newaid,
       text: text,
       ansBy: author,
       ansDate: time
@@ -266,11 +268,12 @@ export default class Model {
     if (this.data.questions.length == 0) {
       var newqid = "q1";
     } else {
-      var newqid = "q" + (parseInt(this.data.questions.reduce((max, q) => max.qid > q.qid ? max : q).qid.substring(1)) + 1);
+      console.log(this.data.questions.reduce((max, q) => parseInt(max.qid.substring(1)) > parseInt(q.qid.substring(1)) ? max : q).qid.substring(1));
+      var newqid = "q" + (parseInt(this.data.questions.reduce((max, q) => parseInt(max.qid.substring(1)) > parseInt(q.qid.substring(1)) ? max : q).qid.substring(1)) + 1);
     }
-    console.log(newqid);
+    console.log(`New QID: ${newqid}`);
     this.data.questions.push({
-      qid: 'q' + newqid,
+      qid: newqid,
       title: newtitle,
       text: newtext,
       tagIds: taglist,
@@ -285,8 +288,9 @@ export default class Model {
     if (this.data.tags.length == 0) {
       var newtid = "t1";
     } else {
-      var newtid = "t" + (parseInt(this.data.tags.reduce((max, t) => max.tid > t.tid ? max : t).tid.substring(1)) + 1);
+      var newtid = "t" + (parseInt(this.data.tags.reduce((max, t) => parseInt(max.tid.substring(1)) > parseInt(t.tid.substring(1)) ? max : t).tid.substring(1)) + 1);
     }
+    console.log(`New TID: ${newtid}`);
     this.data.tags.push({tid: newtid, name: tagname});
     return newtid;
   }
