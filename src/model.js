@@ -201,41 +201,64 @@ export default class Model {
   getAllQstns() {
     return this.data.questions;
   }
+
   getQuestionTitle(id) {
     return this.data.questions.find(item => item.qid == id).title;
   }
+
   getQuestionText(id) {
     return this.data.questions.find(item => item.qid === id).text;
   }
+
   getWhoAsked(id) {
     return this.data.questions.find(item => item.qid === id).askedBy;
   }
+
   getAskDate(id) {
     return this.data.questions.find(item => item.qid === id).askDate;
   }
+
   getAllAnswers() {
     return this.data.answers;
   }
+
   getAnswersByQID(questionId) {
     return this.data.answers.filter(ans => this.data.questions.find(q => q.qid === questionId).ansIds.includes(ans.aid)).sort((a, b) => a.ansDate < b.ansDate);
   }
+
   getViews(questionId) {
     return this.data.questions.find(item => item.qid === questionId).views;
   }
+
   getAllTags() {
     return this.data.tags;
   }
+
   getQuestionCount() {
     return this.data.questions.length;
   }
+
   findTagName(tagid) {
     return this.data.tags.find(x => x.tid == tagid).name;
   }
+
+  addAnswer(questionId, author, text, time = new Date()) {
+    var newaid = parseInt(this.data.answers[this.data.answers.length-1].aid.substring(1)) + 1;
+    this.data.answers.push({
+      aid: 'a' + newaid,
+      text: text,
+      ansBy: author,
+      ansDate: time
+    });
+    this.data.questions.find(item => item.qid === questionId).ansIds.push('a' + newaid);
+  }
+
   tagExists(name) {
     var tagg = this.data.tags.find(x => x.name == name);
     if (tagg != undefined) return tagg.tid;
     return undefined;
   }
+
   formatDate(askDate, now = new Date()) {
     const timeDiffInSeconds = (now.getTime() - askDate.getTime()) / 1000;
     const timeDiffInMinutes = timeDiffInSeconds / 60;
@@ -244,11 +267,11 @@ export default class Model {
 
     if (timeDiffInDays < 1) {
       if (timeDiffInMinutes < 1) {
-        return `${Math.floor(timeDiffInSeconds)} second${Math.floor(timeDiffInSeconds) == 1 ? "" : "s"} ago.`;
+        return `${Math.floor(timeDiffInSeconds)} second${Math.floor(timeDiffInSeconds) == 1 ? "" : "s"} ago`;
       } else if (timeDiffInHours < 1) {
-        return `${Math.floor(timeDiffInMinutes)} minute${Math.floor(timeDiffInMinutes) == 1 ? "" : "s"} ago.`;
+        return `${Math.floor(timeDiffInMinutes)} minute${Math.floor(timeDiffInMinutes) == 1 ? "" : "s"} ago`;
       } else {
-        return `${Math.floor(timeDiffInHours)} hour${Math.floor(timeDiffInHours) == 1 ? "" : "s"} ago.`;
+        return `${Math.floor(timeDiffInHours)} hour${Math.floor(timeDiffInHours) == 1 ? "" : "s"} ago`;
       }
     } else if (timeDiffInDays < 365) {
       const formattedTime = `${askDate.getHours().toString().padStart(2, '0')}:${askDate.getMinutes().toString().padStart(2, '0')}`;

@@ -25,13 +25,13 @@
 #ap_questiontext {
     text-align: left;
     display: inline-block;
-    width: 75%;
+    width: 65%;
 }
 
 #ap_askedby {
     text-align: left;
     display: inline-block;
-    width: 10%;
+    width: 20%;
 }
 
 #newanswer {

@@ -1,6 +1,7 @@
 import Model from './model.js';
 
 var sortOrder = "Newest";
+var lastViewedQuestion;
 var modle = new Model();
 
 function resetTable(newQ) { /* Re-fetches the question table */
@@ -89,6 +90,7 @@ window.onload = function() {
   document.getElementById("unbutt").onclick = setUnanswered;
   document.getElementById("postqbutt").onclick = submitQuestion;
   document.getElementById("postabutt").onclick = submitAnswer;
+  document.getElementById("ap_answerbutton").onclick = switchToPostAnswerPage;
   Array.from(document.getElementsByClassName("askqbutt")).forEach(butt => {
     butt.onclick = switchToPostPage;
   });
@@ -109,12 +111,13 @@ window.checkSearch = function checkSearch(event) { /* This needs to be window.ch
 function showAnswers(questionId) {
   return function() {
     /* Setup page information */
+    lastViewedQuestion = questionId;
     var answers = modle.getAnswersByQID(questionId);
     document.getElementById("ap_questiontitle").innerHTML = `<b>${modle.getQuestionTitle(questionId)}</b>`;
     document.getElementById("ap_questiontext").innerHTML = `${modle.getQuestionText(questionId)}`;
     document.getElementById("ap_answercount").innerHTML = `${answers.length} answers`;
     document.getElementById("ap_views").innerHTML = `<b>${modle.getViews(questionId)} views</b>`;
-    document.getElementById("ap_askedby").innerHTML = `asked by <b>${modle.getWhoAsked(questionId)}</b> ${modle.formatDate(modle.getAskDate(questionId))}`
+    document.getElementById("ap_askedby").innerHTML = `<b>${modle.getWhoAsked(questionId)}</b> asked<br>${modle.formatDate(modle.getAskDate(questionId))}`
     var answertable = document.getElementById("ap_answers");
     while (answertable.rows.length > 0) answertable.deleteRow(0);
     /* Add empty row for dotted line above first question */
@@ -187,17 +190,16 @@ function submitQuestion() {
     //console.table(modle.data.questions);
     switchToQuestionPage();
     resetTable();
+    return true;
   } else return false;
 }
 
 function submitAnswer() {
   if (checkAnswerForm()) {
-    var newqid = parseInt(modle.data.answers[modle.data.answers.length-1].aid.substring(1)) + 1;
-    /* Need to implement */
-    /* No need to check tags */
-    /* Push the new answer to the modle.data */
+    modle.addAnswer(lastViewedQuestion, document.getElementById("auser").value, document.getElementById("atext").value);
     console.table(modle.data.answers);
-    /* switchToAnswerPage(); */
+    showAnswers(lastViewedQuestion)();
+    return true;
   } else return false;
 }
 
