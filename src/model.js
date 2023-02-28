@@ -48,7 +48,7 @@ export default class Model {
                     text: 'hey vsauce, michael here',
                     tagIds: ['t8'],
                     askedBy : 'awawawawawa',
-                    askDate: new Date('February 12, 2023 19:53:19'),
+                    askDate: new Date('December, 2023 19:53:19'),
                     ansIds: [],
                     views: 23623,
                   },
@@ -247,8 +247,11 @@ export default class Model {
   }
 
   addAnswer(questionId, author, text, time = new Date()) {
-    var sorted = this.data.answers.sort((a, b) => a.aid.substring(1) - b.aid.substring(1));
-    var newaid = parseInt(sorted[sorted.length-1].aid.substring(1)) + 1;
+    if (this.data.answers.length == 0) {
+      var newaid = "a1";
+    } else {
+      var newaid = "a" + (parseInt(this.data.answers.reduce((max, a) => max.aid > a.aid ? max : a).aid.substring(1)) + 1);
+    }
     this.data.answers.push({
       aid: 'a' + newaid,
       text: text,
@@ -256,14 +259,15 @@ export default class Model {
       ansDate: time
     });
     this.data.questions.find(item => item.qid === questionId).ansIds.push('a' + newaid);
+    return newaid;
   }
+
   addQuestion(newtitle, newtext, taglist, askuser) {
     if (this.data.questions.length == 0) {
       var newqid = "q1";
     } else {
       var newqid = "q" + (parseInt(this.data.questions.reduce((max, q) => max.qid > q.qid ? max : q).qid.substring(1)) + 1);
     }
-    /* var newqid = parseInt(this.data.questions[this.data.questions.length-1].qid.substring(1)) + 1; */
     console.log(newqid);
     this.data.questions.push({
       qid: 'q' + newqid,
@@ -278,8 +282,12 @@ export default class Model {
   }
 
   addTag(tagname) {
-    var newtid = parseInt(this.data.tags[this.data.tags.length-1].tid.substring(1)) + 1;
-    this.data.tags.push({tid: 't' + newtid, name: tagname});
+    if (this.data.tags.length == 0) {
+      var newtid = "t1";
+    } else {
+      var newtid = "t" + (parseInt(this.data.tags.reduce((max, t) => max.tid > t.tid ? max : t).tid.substring(1)) + 1);
+    }
+    this.data.tags.push({tid: newtid, name: tagname});
     return newtid;
   }
 
