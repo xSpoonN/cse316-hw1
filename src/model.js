@@ -237,30 +237,25 @@ export default class Model {
     return undefined;
   }
   formatDate(askDate, now = new Date()) {
-    if ((now.getTime() - askDate.getTime())/1000/60/60/24 < 24) { //Last 24 hours
-      if ((now.getTime() - askDate.getTime())/1000/60 == 1) { /* Exactly one minute ago */
-        return `1 minute ago.`;
-      } else if ((now.getTime() - askDate.getTime())/1000 == 1) { /* Exactly one second ago */
-        return `1 second ago.`;
-      } else if ((now.getTime() - askDate.getTime())/1000/60/60 == 1) { /* Exactly one hour ago */
-        return `1 hour ago.`;
-      } else if ((now.getTime() - askDate.getTime())/1000/60 < 1) { /* Less than one minute ago */
-        return `${Math.floor(((now.getTime() - askDate.getTime())/1000))} seconds ago.`;
-      } else if ((now.getTime() - askDate.getTime())/1000/60/60 < 1) { /* Less than one hour ago */
-        return `${Math.floor(((now.getTime() - askDate.getTime())/1000/60))} minutes ago.`;
-      } else { /* More than an hour ago */
-        return `${Math.floor(((now.getTime() - askDate.getTime())/1000/60/60))} hours ago.`;
-      }
-    } else {
-      if ((now.getTime() - askDate.getTime())/1000/60/60/24/365 < 1) { /* Less than a year ago */
-        return `${askDate.toDateString().substring(4,askDate.toDateString().length-5)} at
-        ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats time to xx:xx
-        `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
+    const timeDiffInSeconds = (now.getTime() - askDate.getTime()) / 1000;
+    const timeDiffInMinutes = timeDiffInSeconds / 60;
+    const timeDiffInHours = timeDiffInMinutes / 60;
+    const timeDiffInDays = timeDiffInHours / 24;
+
+    if (timeDiffInDays < 1) {
+      if (timeDiffInMinutes < 1) {
+        return `${Math.floor(timeDiffInSeconds)} second${Math.floor(timeDiffInSeconds) == 1 ? "" : "s"} ago.`;
+      } else if (timeDiffInHours < 1) {
+        return `${Math.floor(timeDiffInMinutes)} minute${Math.floor(timeDiffInMinutes) == 1 ? "" : "s"} ago.`;
       } else {
-        return `${askDate.toDateString().substring(4)} at 
-        ${askDate.getHours() < 10 ? `0${askDate.getHours()}` : askDate.getHours()}` + //Formats time to xx:xx
-        `:${askDate.getMinutes() < 10 ? `0${askDate.getMinutes()}` : askDate.getMinutes()}`;
+        return `${Math.floor(timeDiffInHours)} hour${Math.floor(timeDiffInHours) == 1 ? "" : "s"} ago.`;
       }
+    } else if (timeDiffInDays < 365) {
+      const formattedTime = `${askDate.getHours().toString().padStart(2, '0')}:${askDate.getMinutes().toString().padStart(2, '0')}`;
+      return `${askDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} at ${formattedTime}`;
+    } else {
+      const formattedTime = `${askDate.getHours().toString().padStart(2, '0')}:${askDate.getMinutes().toString().padStart(2, '0')}`;
+      return `${askDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })} at ${formattedTime}`;
     }
   }
 }
