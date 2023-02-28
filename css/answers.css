@@ -1,6 +1,6 @@
-#ap_table {
-    border-collapse:collapse;
-    padding:10px;
+#ap_answers {
+    border-collapse: collapse;
+    padding: 10px;
     width: 100%;
 }
 
@@ -31,4 +31,12 @@
     text-align: left;
     display: inline-block;
     width: 15%;
+}
+
+.aRow {
+    border-bottom: 1px dotted black;
+}
+
+.aTD {
+    padding: 15px;
 }
