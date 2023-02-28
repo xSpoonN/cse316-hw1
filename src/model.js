@@ -256,7 +256,14 @@ export default class Model {
     });
     this.data.questions.find(item => item.qid === questionId).ansIds.push('a' + newaid);
   }
-  addQuestion(newqid, newtitle, newtext, taglist, askuser) {
+  addQuestion(newtitle, newtext, taglist, askuser) {
+    if (this.data.questions.length == 0) {
+      var newqid = "q1";
+    } else {
+      var newqid = "q" + (parseInt(this.data.questions.reduce((max, q) => max.qid > q.qid ? max : q).qid.substring(1)) + 1);
+    }
+    /* var newqid = parseInt(this.data.questions[this.data.questions.length-1].qid.substring(1)) + 1; */
+    console.log(newqid);
     this.data.questions.push({
       qid: 'q' + newqid,
       title: newtitle,
@@ -269,8 +276,10 @@ export default class Model {
     });
   }
 
-  addTag(newtid, tagname) {
+  addTag(tagname) {
+    var newtid = parseInt(this.data.tags[this.data.tags.length-1].tid.substring(1)) + 1;
     this.data.tags.push({tid: 't' + newtid, name: tagname});
+    return newtid;
   }
 
   tagExists(name) {

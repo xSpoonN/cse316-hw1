@@ -5,21 +5,18 @@ export function submitQuestion() {
     if (checkQuestionForm()) {
       /* Generates the next question id */
       // todo: move this into modle
-      var newqid = parseInt(modle.getAllQstns()[modle.getAllQstns().length-1].qid.substring(1)) + 1;
-      console.log(newqid);
       var tags = document.getElementById("qtags").value.split(" ");
       var taglist = [];
       for (let i = 0; i < tags.length; i++) {
         var tagid = modle.tagExists(tags[i]);
         if (tagid) taglist.push(tagid); /* If the tag already exists, don't make a new one */
         else { /* Generates a new tag with the next id */
-          var newtid = parseInt(modle.getAllTags()[modle.data.tags.length-1].tid.substring(1)) + 1;
-          modle.addTag(newtid, tags[i]);
-          taglist.push('t' + newtid);
+          /* modle.addTag(tags[i]); */
+          taglist.push('t' + modle.addTag(tags[i]));
         }
       }
       //todo: move this into model.js
-      modle.addQuestion(newqid, document.getElementById("qtitle").value, document.getElementById("qtext").value, taglist, document.getElementById("quser").value)
+      modle.addQuestion(document.getElementById("qtitle").value, document.getElementById("qtext").value, taglist, document.getElementById("quser").value)
       showPage("questions");
       resetTable();
       return true;
