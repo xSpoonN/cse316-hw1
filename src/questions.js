@@ -43,7 +43,7 @@ export function search(query) {
   }
 
 export function fetchQuestions(qList = modle.getAllQstns()) {
-    document.getElementById("questioncount").innerHTML = `${qList.length} questions`;
+    document.getElementById("questioncount").innerHTML = `${qList.length} question${qList.length == 1 ? "" : "s"}`;
     var tbl = document.getElementById("questions");
 
     /* Sort Options */
