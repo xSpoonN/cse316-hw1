@@ -57,8 +57,8 @@ function checkQuestionForm() { /* Validates the question form */
 
 
   /* Validate Tags */
-  if (!/^\w+(\s\w+){0,4}$/.test(document.getElementById("qtags").value)) { /* regex auuuuuggghhhhhhh */
-    document.getElementById("qtagserror").innerHTML = "Between 1-5 tags are required!";
+  if (!/^((?<=[\w\+\?\#\.])-?(?=[\w\+\?\#\.])|[\w\+\?\#\.]){1,10}(\s((?<=[\w\+\?\#\.])-?(?=[\w\+\?\#\.])|[\w\+\?\#\.]){1,10}){0,4}$/.test(document.getElementById("qtags").value)) { /* regex auuuuuggghhhhhhh */
+    document.getElementById("qtagserror").innerHTML = "Between 1-5 tags of length 1-10 are required!";
     document.getElementById("qtagserror").style.display = "block";
     errFound = true;
   } else document.getElementById("qtagserror").style.display = "none";
