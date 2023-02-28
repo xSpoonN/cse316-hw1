@@ -141,11 +141,13 @@ function showAnswers(questionId) {
     } else {
       document.getElementById("ap_noanswers").style.display = 'none';
       answers.forEach((answer) => {
-        // Todo: make this dotted lines
         var row = answertable.insertRow();
+        row.setAttribute("class", "aRow");
         var textcol = row.insertCell(0);
         var creditcol = row.insertCell(1);
-        textcol.innerHTML = answer.text;
+        textcol.setAttribute("class", "aTD");
+        creditcol.setAttribute("class", "aTD");
+        textcol.textContent = answer.text;
         creditcol.innerHTML = "<b>" + answer.ansBy + "</b> answered " +  answer.ansDate.toLocaleDateString();
       });
     }
