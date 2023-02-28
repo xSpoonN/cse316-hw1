@@ -84,7 +84,7 @@ export default class Model {
                   },
                   {
                     qid: 'q9',
-                    title: 'How do I kill a child and make sure they are dead?',
+                    title: 'How to forcefully kill a child?',
                     text: 'I am writing a C program that deals with child processes, and I need to kill the spawned processes. How do I go about this?',
                     tagIds: ['t10'],
                     askedBy : 'jason huh',
