@@ -2,6 +2,12 @@
     border: 1px dotted black;
 }
 
+.qlink {
+    text-decoration: none;
+    color: blue;
+    cursor: pointer;
+}
+
 #qtitle {
     width: 70%;
     max-width: 665px;
@@ -34,18 +40,6 @@
     background-color: cornflowerblue;
     color: white;
     border-color: cornflowerblue;
-}
-
-#askqbutt {
-    padding: 6px;
-    display: inline-block;
-    position: fixed;
-    font-size: medium;
-    background-color: cornflowerblue;
-    color: white;
-    border-color: cornflowerblue;
-    right: 20px;
-    top: 120px;
 }
 
 #questioncount {
