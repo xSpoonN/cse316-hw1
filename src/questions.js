@@ -27,7 +27,7 @@ export function search(query) {
     var searchTags = searchTerms.filter(word => /^\[\S+\]$/.test(word)); /* Tests for [x] for tags */
     searchTags = searchTags.map(tag => tag.replace(/\[|\]/g,"")); /* Deletes the brackets from each tag */
     //todo: modle.getQuestions()? modle.getAllTags()?
-    const q = modle.getAllQstns; const t = modle.getAllTags; var out = [];
+    const q = modle.getAllQstns(); const t = modle.getAllTags(); var out = [];
     for (let i = 0; i < q.length; i++) {
       if (((searchWords.some(term => q[i].title.toLowerCase().includes(term) || //Title includes a search term
           q[i].text.toLowerCase().includes(term))) || //Description includes the search term
@@ -42,7 +42,7 @@ export function search(query) {
   }
 
 export function fetchQuestions(qList = modle.getAllQstns()) {
-    document.getElementById("questioncount").innerHTML = `${qList.length} questions`;
+    document.getElementById("questioncount").innerHTML = `${qList.length} question${qList.length == 1 ? "" : "s"}`;
     var tbl = document.getElementById("questions");
 
     /* Sort Options */
