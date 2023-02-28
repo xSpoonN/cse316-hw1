@@ -223,7 +223,7 @@ export default class Model {
   }
 
   getAnswersByQID(questionId) {
-    return this.data.answers.filter(ans => this.data.questions.find(q => q.qid === questionId).ansIds.includes(ans.aid)).sort((a, b) => a.ansDate < b.ansDate);
+    return this.data.answers.filter(ans => this.data.questions.find(q => q.qid === questionId).ansIds.includes(ans.aid)).sort((a, b) => b.ansDate - a.ansDate);
   }
 
   getViews(questionId) {
