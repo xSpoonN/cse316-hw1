@@ -1,0 +1,9 @@
+.tagbox {
+    display: inline-block;
+    width: 20%;
+    height: 15%;
+    border: 1px dotted black;
+    margin: 5%;
+    text-align: center;
+    font-size: 24px;
+}

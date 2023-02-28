@@ -1,5 +1,5 @@
 import Model from './model.js';
-import {} from './alltags.js'
+import { showTagsPage } from './alltags.js'
 import { submitAnswer, showAnswerForm } from './answerform.js'
 import {} from './answers.js'
 import { submitQuestion, showQuestionForm } from './questionform.js'
@@ -10,8 +10,9 @@ export const modle = new Model();
 window.onload = function() {
   document.getElementById("newbutt").onclick = setNewest;
   document.getElementById("activebutt").onclick = setActive;
-  document.getElementById("questiontab").onclick = questPage;
   document.getElementById("unbutt").onclick = setUnanswered;
+  document.getElementById("questiontab").onclick = questPage;
+  document.getElementById("tagtab").onclick = showTagsPage;
   document.getElementById("postqbutt").onclick = submitQuestion;
   document.getElementById("postabutt").onclick = submitAnswer;
   document.getElementById("ap_answerbutton").onclick = showAnswerForm;
