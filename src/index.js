@@ -90,9 +90,9 @@ window.onload = function() {
   document.getElementById("unbutt").onclick = setUnanswered;
   document.getElementById("postqbutt").onclick = submitQuestion;
   document.getElementById("postabutt").onclick = submitAnswer;
-  document.getElementById("ap_answerbutton").onclick = switchToPostAnswerPage;
+  document.getElementById("ap_answerbutton").onclick = showAnswerForm;
   Array.from(document.getElementsByClassName("askqbutt")).forEach(butt => {
-    butt.onclick = switchToPostPage;
+    butt.onclick = showQuestionForm;
   });
 
   fetchQuestions();
@@ -141,6 +141,20 @@ function showAnswers(questionId) {
     }
     switchToAnswerPage();
   }
+}
+
+function showQuestionForm() {
+  document.getElementById("qtitle").value = "";
+  document.getElementById("qtext").value = "";
+  document.getElementById("qtags").value = "";
+  document.getElementById("quser").value = "";
+  switchToPostPage();
+}
+
+function showAnswerForm() {
+  document.getElementById("auser").value = "";
+  document.getElementById("atext").value = "";
+  switchToPostAnswerPage();
 }
 
 function search(query) {
