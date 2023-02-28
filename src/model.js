@@ -233,7 +233,7 @@ export default class Model {
     if (tagg != undefined) return tagg.tid;
     return undefined;
   }
-  formatDate(now, askDate, rightCell) {
+  formatDate(askDate, rightCell, now = Date()) {
     if ((now.getTime() - askDate.getTime())/1000/60/60/24 < 24) { //Last 24 hours
       if ((now.getTime() - askDate.getTime())/1000/60 == 1) { /* Exactly one minute ago */
         rightCell.innerHTML += `1 minute ago.`;

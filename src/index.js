@@ -77,7 +77,7 @@ function fetchQuestions(qList = modle.getAllQstns()) {
     rightCell.setAttribute("class","qTD");
     rightCell.innerHTML = `${question.askedBy} asked `;
     
-    modle.formatDate(now, askDate, rightCell);
+    modle.formatDate(askDate, rightCell, now);
   }
 }
 
@@ -86,7 +86,6 @@ window.onload = function() {
   document.getElementById("activebutt").onclick = setActive;
   document.getElementById("questiontab").onclick = switchToQuestionPage;
   document.getElementById("unbutt").onclick = setUnanswered;
-  //document.getElementById("askqbutt").onclick = switchToPostPage;
   document.getElementById("postqbutt").onclick = submitQuestion;
   document.getElementById("postabutt").onclick = submitAnswer;
   Array.from(document.getElementsByClassName("askqbutt")).forEach(butt => {

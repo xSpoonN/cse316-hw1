@@ -1,6 +1,7 @@
 /* Add CSS stylesheet */
 body { /* Applies this font globally */
     font-family: Arial, Helvetica, sans-serif;
+    margin:0;
 }
 
 .header {
