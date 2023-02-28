@@ -12,6 +12,8 @@ export function resetTable(newQ) { /* Re-fetches the question table */
 
 export function questPage() {
     resetTable();
+    document.getElementById("questiontab").style.backgroundColor = "rgb(189, 189, 189)";
+    document.getElementById("tagtab").style.backgroundColor = "";
     showPage("questions");
 }
 

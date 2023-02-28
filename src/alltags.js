@@ -1,12 +1,14 @@
 import { modle, showPage } from './index.js';
 
 export function showTagsPage() {
+    document.getElementById("questiontab").style.backgroundColor = "";
+    document.getElementById("tagtab").style.backgroundColor = "rgb(189, 189, 189)";
     var tags = Array.from(modle.getAllTags());
     var parent = document.getElementById("alltags");
     var children = parent.children;
     for (let i = 0; i < children.length; i++) {
       if (children[i].tagName === 'DIV' || children[i].tagName === 'BR') {
-        parent.removeChild(child);
+        parent.removeChild(children[i]);
         i--; // adjust the loop index because the child array is now shorter
       }
     }

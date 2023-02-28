@@ -19,6 +19,8 @@ window.onload = function() {
   Array.from(document.getElementsByClassName("askqbutt")).forEach(butt => {
     butt.onclick = showQuestionForm;
   });
+  document.getElementById("questiontab").style.backgroundColor = "rgb(189, 189, 189)";
+  document.getElementById("tagtab").style.backgroundColor = "";
 
   fetchQuestions();
   showPage("questions");

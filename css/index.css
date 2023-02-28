@@ -44,9 +44,9 @@ body { /* Applies this font globally */
     background-color: rgb(189, 189, 189);
 }
 
-#questiontab {
+/* #questiontab {
     background-color: rgb(189, 189, 189);
-}
+} */
 
 #search {
     text-align: left;
