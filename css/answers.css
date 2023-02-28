@@ -37,10 +37,20 @@
 #newanswer {
     display:none;
 }
+
 .aRow {
     border-bottom: 1px dotted black;
 }
 
 .aTD {
     padding: 15px;
+}
+
+#ap_answerbutton {
+    padding: 6px;
+    display: inline-block;
+    font-size: medium;
+    background-color: cornflowerblue;
+    color: white;
+    border-color: cornflowerblue;
 }
