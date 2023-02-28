@@ -1,0 +1,66 @@
+.questionElement {
+    border: 1px dotted black;
+}
+
+#qtitle {
+    width: 70%;
+    max-width: 665px;
+    height: 40px;
+    font-size: 20px
+}
+
+#qtext {
+    font-size: 14px;
+    max-width: 665px;
+    width: 70%
+}
+
+#qtags,
+#quser {
+    width: 70%;
+    max-width: 665px;
+    height: 40px;
+    font-size: 16px
+}
+
+#postqbutt {
+    padding: 6px;
+    display: inline-block;
+    font-size: medium;
+    background-color: cornflowerblue;
+    color: white;
+    border-color: cornflowerblue;
+}
+
+#askqbutt {
+    padding: 6px;
+    display: inline-block;
+    position: fixed;
+    font-size: medium;
+    background-color: cornflowerblue;
+    color: white;
+    border-color: cornflowerblue;
+    right: 20px;
+    top: 120px;
+}
+
+#questioncount {
+    display: inline-block;
+    width: 50%
+}
+
+.questionsort {
+    display: inline;
+}
+
+.questions {
+    border-collapse: collapse;
+    padding: 10px;
+    width: 100%;
+}
+
+.contentheader {
+    font-size: x-large;
+    font-weight: bold;
+    display: inline-block;
+}
