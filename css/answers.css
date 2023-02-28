@@ -1,0 +1,16 @@
+#ap_table {
+    border-collapse:collapse;
+    padding:10px;
+    width: 100%;
+}
+
+#ap_questiontitle {
+    text-align: center;
+    display: inline-block;
+    width: 50%;
+}
+
+#ap_answercount {
+    text-align: left;
+    display: inline-block;
+}

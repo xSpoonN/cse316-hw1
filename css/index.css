@@ -86,11 +86,6 @@ body { /* Applies this font globally */
     top: 120px;
 }
 
-#ap_questiontitle {
-    text-align: center;
-    display: inline-block;
-}
-
 #questioncount {
     display: inline-block;
     width: 50%

@@ -1,6 +1,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/answers.css">
   <link rel="icon" href="QueueUnderflow.png">
   <script type="module" src="src/index.js"></script>
   <title>Queue Underflow</title>
@@ -59,6 +60,15 @@
 
     <!-- Answer Page -->
     <div id="answerpage" class="content">
+      <p id="ap_answercount"></p>
+      <p id="ap_questiontitle"></p>
+      <p id="ap_questiontext"></p>
+      <button id="askqbutt">Ask Question</button>
+      <p id="ap_views"></p>
+      <br>
+      <table id="ap_answers" class="answerlist"></table>
+      <p id="ap_noanswers"><i>No Answers Yet...</i></p>
+      <!--
       <table id="ap_table">
         <tr id="ap_answer_title">
           <td id="ap_answercount">x answers</td>
@@ -71,15 +81,6 @@
           <td id="ap_askedby">user asked x hours ago</td>
         </tr>
       </table>
-      <!--
-      <p id="ap_answercount"></p>
-      <p id="ap_questiontitle"></p>
-      <p id="ap_questiontext"></p>
-      <button id="askqbutt">Ask Question</button>
-      <p id="ap_views"></p>
-      <br>
-      <table id="ap_answers" class="answerlist"></table>
-      <p id="ap_noanswers" style="display:none;"><i>No Answers Yet...</i></p>
       -->
     </div>
 
