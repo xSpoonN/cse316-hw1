@@ -24,16 +24,6 @@ export default class Model {
                   },
                   {
                     qid: 'q3',
-                    title: 'why my pee red',
-                    text: 'i snorted some green dust in a nyc alley, and now i have periods despite being a male. pls help am i dying',
-                    tagIds: ['t5'],
-                    askedBy : 'Jason',
-                    askDate: new Date('January 17, 2023 09:23:18'),
-                    ansIds: ['a6'],
-                    views: 394523,
-                  },
-                  {
-                    qid: 'q4',
                     title: 'there is a fat man stuck in my chimney claiming to be santa claus',
                     text: 'he smells like piss, how do i get rid of him',
                     tagIds: ['t6','t7'],
@@ -43,7 +33,7 @@ export default class Model {
                     views: 4,
                   },
                   {
-                    qid: 'q5',
+                    qid: 'q4',
                     title: 'who asked?',
                     text: 'modcheck',
                     tagIds: ['t8'],
@@ -53,7 +43,7 @@ export default class Model {
                     views: 99,
                   },
                   {
-                    qid: 'q6',
+                    qid: 'q5',
                     title: 'where are your fingers?',
                     text: 'hey vsauce, michael here',
                     tagIds: ['t8'],
@@ -63,7 +53,7 @@ export default class Model {
                     views: 23623,
                   },
                   {
-                    qid: 'q7',
+                    qid: 'q6',
                     title: 'whopper whopper whopper whopper junior double triple whopper',
                     text: 'flame grilled taste with perfect toppers i rule i rule i rule this day lettuce mayo pickle ketchup',
                     tagIds: [],
@@ -73,7 +63,7 @@ export default class Model {
                     views: 1,
                   },
                   {
-                    qid: 'q8',
+                    qid: 'q7',
                     title: 'chocolate chocolate chip',
                     text: 'jack',
                     tagIds: ['t8'],
@@ -83,7 +73,7 @@ export default class Model {
                     views: 5888888888,
                   },
                   {
-                    qid: 'q9',
+                    qid: 'q8',
                     title: 'How to forcefully kill a child?',
                     text: 'I am writing a C program that deals with child processes, and I need to kill the spawned processes. How do I go about this?',
                     tagIds: ['t10', 't11'],
