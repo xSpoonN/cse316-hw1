@@ -18,6 +18,6 @@ Read the requirements [here](https://docs.google.com/document/d/1hoYYAazg7Mwi15U
 > 
 > Post an Answer
 > 
+> All Tags Page
 > 
-> 
-> 
+> Filter by Tag
