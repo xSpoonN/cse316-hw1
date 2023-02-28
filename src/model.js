@@ -86,7 +86,7 @@ export default class Model {
                     qid: 'q9',
                     title: 'How to forcefully kill a child?',
                     text: 'I am writing a C program that deals with child processes, and I need to kill the spawned processes. How do I go about this?',
-                    tagIds: ['t10'],
+                    tagIds: ['t10', 't11'],
                     askedBy : 'jason huh',
                     askDate: new Date('February 23, 2023 19:53:19'),
                     ansIds: ['a9'],
@@ -132,7 +132,11 @@ export default class Model {
         },
         {
           tid: 't10',
-          name: 'C',
+          name: 'c',
+        },
+        {
+          tid: 't11',
+          name: 'life-advice',
         }
       ],
       answers: [
