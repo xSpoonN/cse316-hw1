@@ -70,3 +70,10 @@
 .qTD {
     padding: 15px;
 }
+
+.qtag {
+    color:white;
+    background-color:grey;
+    display:inline-block;
+    cursor:copy;
+}
