@@ -1,7 +1,7 @@
 import Model from './model.js';
 import { showTagsPage } from './alltags.js'
 import { submitAnswer, showAnswerForm } from './answerform.js'
-import {} from './answers.js'
+//import {} from './answers.js'
 import { submitQuestion, showQuestionForm } from './questionform.js'
 import { resetTable, questPage, setNewest, setActive, setUnanswered, search, fetchQuestions } from './questions.js'
 

@@ -238,6 +238,16 @@ export default class Model {
     return this.data.questions.length;
   }
 
+  getQuestionCountByTag(tagname) {
+    var tagId = this.data.tags.find(t => t.name === tagname).tid;
+    return this.data.tags.filter(t => t.tid === tagId).length;
+  }
+
+  getQuestionsByTagString(tagname) {
+    var tagId = this.data.tags.find(t => t.name === tagname).tid;
+    return this.data.questions.filter(q => q.tagIds.includes(tagId));
+  }
+
   findTagName(tagid) {
     return this.data.tags.find(x => x.tid == tagid).name;
   }

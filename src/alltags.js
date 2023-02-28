@@ -1,4 +1,5 @@
 import { modle, showPage } from './index.js';
+import { questPage, resetTable } from './questions.js';
 
 export function showTagsPage() {
     document.getElementById("questiontab").style.backgroundColor = "";
@@ -27,11 +28,32 @@ export function showTagsPage() {
             col = 0; ++row;
             parent.appendChild(document.createElement("br"));
         }
+        /* Create box */
         var div = document.createElement("div");
         div.setAttribute("class", "tagbox");
         parent.appendChild(div);
         div.style.gridColumn = col; div.style.gridRow = row;
-        div.textContent = tag.name;
+
+        /* Create link to tag filter */
+        var link = document.createElement("p");
+        link.setAttribute("class", "taglink");
+        addTagLink(div, tag.name);
+        link.textContent = tag.name;
+        div.appendChild(link);
+
+        /* Question count */
+        var qcount = document.createElement("p");
+        qcount.setAttribute("class", "tagqcount");
+        var c = modle.getQuestionCountByTag(tag.name);
+        qcount.textContent = c + " question" + ((c == 1) ? "" : "s");
+        div.appendChild(qcount);
     });
     showPage("alltags");
+}
+
+export function addTagLink(element, tagname) {
+  element.onclick = function() {
+    questPage();
+    resetTable(modle.getQuestionsByTagString(tagname));
+  }
 }

@@ -28,3 +28,14 @@
     display: inline-block;
     width:25%;
 }
+
+.taglink {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+    text-align: center;
+}
+
+.tagqcount {
+    text-align: center;
+}
