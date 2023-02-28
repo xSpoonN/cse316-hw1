@@ -88,7 +88,7 @@ export default class Model {
                     text: 'I am writing a C program that deals with child processes, and I need to kill the spawned processes. How do I go about this?',
                     tagIds: ['t10', 't11'],
                     askedBy : 'jason huh',
-                    askDate: new Date('February 23, 2023 19:53:19'),
+                    askDate: new Date('February 27, 2023 21:04:00'),
                     ansIds: ['a9'],
                     views: 4,
                   }

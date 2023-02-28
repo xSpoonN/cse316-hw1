@@ -72,12 +72,13 @@ function fetchQuestions(qList = modle.getAllQstns()) {
     }
 
     /* Right Column */ /* The date is manually set here for testing purposes */
-    var now = new Date('February 12, 2023 19:53:46'); var askDate = question.askDate;
+    // var now = new Date('February 12, 2023 19:53:46');
+    var askDate = question.askDate;
     var rightCell = newRow.insertCell(2);
     rightCell.setAttribute("class","qTD");
     rightCell.innerHTML = `${question.askedBy} asked `;
     
-    rightCell.innerHTML += modle.formatDate(askDate, now);
+    rightCell.innerHTML += modle.formatDate(askDate/*, now*/);
   }
 }
 
