@@ -90,7 +90,7 @@ export function fetchQuestions(qList = modle.getAllQstns()) {
         var askDate = question.askDate;
         var rightCell = newRow.insertCell(2);
         rightCell.setAttribute("class","qTD");
-        rightCell.innerHTML = `${question.askedBy} asked `;
+        rightCell.innerHTML = `<b>${question.askedBy}</b> asked `;
         
         rightCell.innerHTML += modle.formatDate(askDate/*, now*/);
     }
