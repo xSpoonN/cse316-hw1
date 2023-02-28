@@ -15,6 +15,10 @@
     width: 70%
 }
 
+#askquestion {
+    display: none;
+}
+
 #qtags,
 #quser {
     width: 70%;
