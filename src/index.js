@@ -84,6 +84,7 @@ function fetchQuestions(qList = modle.getAllQstns()) {
 window.onload = function() {
   document.getElementById("newbutt").onclick = setNewest;
   document.getElementById("activebutt").onclick = setActive;
+  document.getElementById("questiontab").onclick = switchToQuestionPage;
   document.getElementById("unbutt").onclick = setUnanswered;
   document.getElementById("askqbutt").onclick = switchToPostPage;
   document.getElementById("postqbutt").onclick = submitQuestion;
