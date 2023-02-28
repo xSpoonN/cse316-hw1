@@ -64,3 +64,11 @@
     font-weight: bold;
     display: inline-block;
 }
+
+.qRow {
+    border-bottom: 1px dotted black;
+}
+
+.qTD {
+    padding: 15px;
+}

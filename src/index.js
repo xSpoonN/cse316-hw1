@@ -39,19 +39,23 @@ function fetchQuestions(qList = modle.getAllQstns()) {
   if (sortOrder == "Active") qList.sort(compareActive);
 
   /* This line is needed to have a dotted line on top */
-  tbl.insertRow();
+  tbl.insertRow().setAttribute("class", "qRow");
 
   /* Question List */
   for (let i = 0; i < qList.length; i++) {
     var question = qList[i];
     if (sortOrder == "Unanswered" && question.ansIds.length != 0) continue;
     var newRow = tbl.insertRow();
+    newRow.setAttribute("class", "qRow");
 
     /* Left Column */
-    newRow.insertCell(0).innerHTML = `${question.ansIds.length} answers <br>${question.views} views`;
+    var leftCell = newRow.insertCell(0);
+    leftCell.setAttribute("class","qTD");
+    leftCell.innerHTML = `${question.ansIds.length} answers <br>${question.views} views`;
 
     /* Middle Column */
     var midCell = newRow.insertCell(1);
+    midCell.setAttribute("class","qTD");
     var qtitle = document.createElement("a");
     qtitle.setAttribute("class", "qlink");
     qtitle.textContent = question.title;
@@ -70,6 +74,7 @@ function fetchQuestions(qList = modle.getAllQstns()) {
     /* Right Column */ /* The date is manually set here for testing purposes */
     var now = new Date('February 12, 2023 19:53:46'); var askDate = question.askDate;
     var rightCell = newRow.insertCell(2);
+    rightCell.setAttribute("class","qTD");
     rightCell.innerHTML = `${question.askedBy} asked `;
     
     if ((now.getTime() - askDate.getTime())/1000/60/60/24 < 24) { //Last 24 hours
