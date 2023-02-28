@@ -86,7 +86,7 @@ function fetchQuestions(qList = modle.getAllQstns()) {
 window.onload = function() {
   document.getElementById("newbutt").onclick = setNewest;
   document.getElementById("activebutt").onclick = setActive;
-  document.getElementById("questiontab").onclick = switchToQuestionPage;
+  document.getElementById("questiontab").onclick = questPage();
   document.getElementById("unbutt").onclick = setUnanswered;
   document.getElementById("postqbutt").onclick = submitQuestion;
   document.getElementById("postabutt").onclick = submitAnswer;
@@ -98,6 +98,13 @@ window.onload = function() {
   fetchQuestions();
   switchToQuestionPage();
 };
+
+function questPage() {
+  return function() {
+    switchToQuestionPage();
+    resetTable();
+  }
+}
 
 window.checkSearch = function checkSearch(event) { /* This needs to be window.checkSearch so its callable in index.html */
   if (event.keyCode == 13) { /* keyCode 13 = Enter key */
