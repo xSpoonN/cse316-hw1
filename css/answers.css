@@ -14,3 +14,21 @@
     text-align: left;
     display: inline-block;
 }
+
+#ap_views {
+    text-align: left;
+    display: inline-block;
+    width: 15%;
+}
+
+#ap_questiontext {
+    text-align: left;
+    display: inline-block;
+    width: 70%;
+}
+
+#ap_askedby {
+    text-align: left;
+    display: inline-block;
+    width: 15%;
+}
