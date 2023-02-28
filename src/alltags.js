@@ -37,7 +37,7 @@ export function showTagsPage() {
         /* Create link to tag filter */
         var link = document.createElement("p");
         link.setAttribute("class", "taglink");
-        addTagLink(div, tag.name);
+        addTagLink(link, tag.name); // Attach this to div or to link?
         link.textContent = tag.name;
         div.appendChild(link);
 
