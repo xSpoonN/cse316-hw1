@@ -76,12 +76,12 @@ body { /* Applies this font globally */
 
 .askqbutt {
     padding: 6px;
-    display: inline-block;
-    position: fixed;
+    position: relative;
     font-size: medium;
     background-color: cornflowerblue;
     color: white;
     border-color: cornflowerblue;
-    right: 20px;
-    top: 120px;
+    right: 15px;
+    float:right;
+    top: 15px;
 }

@@ -5,7 +5,7 @@ export function submitQuestion() {
     if (checkQuestionForm()) {
       /* Generates the next question id */
       // todo: move this into modle
-      var newqid = parseInt(modle.data.questions[modle.data.questions.length-1].qid.substring(1)) + 1;
+      var newqid = parseInt(modle.getAllQstns()[modle.getAllQstns().length-1].qid.substring(1)) + 1;
       console.log(newqid);
       var tags = document.getElementById("qtags").value.split(" ");
       var taglist = [];
@@ -13,24 +13,13 @@ export function submitQuestion() {
         var tagid = modle.tagExists(tags[i]);
         if (tagid) taglist.push(tagid); /* If the tag already exists, don't make a new one */
         else { /* Generates a new tag with the next id */
-          var newtid = parseInt(modle.data.tags[modle.data.tags.length-1].tid.substring(1)) + 1;
-          //todo: move this into model.js
-          modle.data.tags.push({tid: 't' + newtid, name: tags[i]});
+          var newtid = parseInt(modle.getAllTags()[modle.data.tags.length-1].tid.substring(1)) + 1;
+          modle.addTag(newtid, tags[i]);
           taglist.push('t' + newtid);
         }
       }
       //todo: move this into model.js
-      modle.data.questions.push({
-        qid: 'q' + newqid,
-        title: document.getElementById("qtitle").value,
-        text: document.getElementById("qtext").value,
-        tagIds: taglist,
-        askedBy : document.getElementById("quser").value,
-        askDate: new Date(),
-        ansIds: [],
-        views: 0,
-      });
-      //console.table(modle.data.questions);
+      modle.addQuestion(newqid, document.getElementById("qtitle").value, document.getElementById("qtext").value, taglist, document.getElementById("quser").value)
       showPage("questions");
       resetTable();
       return true;

@@ -256,6 +256,22 @@ export default class Model {
     });
     this.data.questions.find(item => item.qid === questionId).ansIds.push('a' + newaid);
   }
+  addQuestion(newqid, newtitle, newtext, taglist, askuser) {
+    this.data.questions.push({
+      qid: 'q' + newqid,
+      title: newtitle,
+      text: newtext,
+      tagIds: taglist,
+      askedBy : askuser,
+      askDate: new Date(),
+      ansIds: [],
+      views: 0,
+    });
+  }
+
+  addTag(newtid, tagname) {
+    this.data.tags.push({tid: 't' + newtid, name: tagname});
+  }
 
   tagExists(name) {
     var tagg = this.data.tags.find(x => x.name == name);
