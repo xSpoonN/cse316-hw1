@@ -45,7 +45,7 @@ export function showTagsPage() {
         var qcount = document.createElement("p");
         qcount.setAttribute("class", "tagqcount");
         var c = modle.getQuestionCountByTag(tag.name);
-        qcount.textContent = c + " question" + ((c == 1) ? "" : "s");
+        qcount.textContent = c + " question" + ((c === 1) ? "" : "s");
         div.appendChild(qcount);
     });
     showPage("alltags");

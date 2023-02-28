@@ -240,7 +240,7 @@ export default class Model {
 
   getQuestionCountByTag(tagname) {
     var tagId = this.data.tags.find(t => t.name === tagname).tid;
-    return this.data.tags.filter(t => t.tid === tagId).length;
+    return this.data.questions.filter(q => q.tagIds.includes(tagId)).length;
   }
 
   getQuestionsByTagString(tagname) {
