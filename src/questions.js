@@ -1,5 +1,6 @@
 import { modle, showPage } from './index.js';
 import { showAnswers } from './answers.js';
+import { addTagLink } from './alltags.js';
 
 var sortOrder = "Newest";
 
@@ -76,10 +77,12 @@ export function fetchQuestions(qList = modle.getAllQstns()) {
         // Setup tags
         midCell.appendChild(document.createElement("br"));
         for (let j = 0; j < question.tagIds.length; j++) { /* Renders each tag as a button thing */
-        var tag = document.createElement("button");
-        tag.setAttribute("style", "color:white;background-color:grey;display:inline-block;");
-        tag.textContent = modle.findTagName(question.tagIds[j]);
-        midCell.appendChild(tag);
+          var tag = document.createElement("button");
+          tag.setAttribute("class", "qtag");
+          var tn = modle.findTagName(question.tagIds[j]);
+          tag.textContent = tn;
+          addTagLink(tag, tn);
+          midCell.appendChild(tag);
         }
 
         /* Right Column */ /* The date is manually set here for testing purposes */
