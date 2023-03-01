@@ -48,7 +48,7 @@ export default class Model {
                     text: 'hey vsauce, michael here',
                     tagIds: ['t8'],
                     askedBy : 'awawawawawa',
-                    askDate: new Date('December, 2023 19:53:19'),
+                    askDate: new Date('December 28, 2022 19:53:19'),
                     ansIds: [],
                     views: 23623,
                   },
@@ -182,7 +182,7 @@ export default class Model {
           aid: 'a9',
           text: 'what the hell is wrong with you',
           ansBy: 'dom',
-          ansDate: new Date('January 12, 2023 15:11:24')
+          ansDate: new Date('February 28, 2023 15:11:24')
         }
       ]
     };
