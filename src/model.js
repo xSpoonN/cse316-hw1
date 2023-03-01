@@ -56,7 +56,7 @@ export default class Model {
                     qid: 'q6',
                     title: 'whopper whopper whopper whopper junior double triple whopper',
                     text: 'flame grilled taste with perfect toppers i rule i rule i rule this day lettuce mayo pickle ketchup',
-                    tagIds: [],
+                    tagIds: ['t11'],
                     askedBy : 'BurgerKing',
                     askDate: new Date('February 12, 2023 19:53:39'),
                     ansIds: [],
