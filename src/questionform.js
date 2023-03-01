@@ -17,6 +17,7 @@ export function submitQuestion() {
           console.log(modle.getAllTags());
         }
       }
+      taglist = [...new Set(taglist)];
       //todo: move this into model.js
       modle.addQuestion(document.getElementById("qtitle").value, document.getElementById("qtext").value, taglist, document.getElementById("quser").value)
       showPage("questions");

@@ -14,25 +14,19 @@ export function showTagsPage() {
     }
     
     parent.replaceChildren(); /* No need to check if its a div/br anymore, just eliminate every child. */
-/*     var children = parent.children;
-    for (let i = 0; i < children.length; i++) {
-      if (children[i].tagName === 'DIV' || children[i].tagName === 'BR') {
-        parent.removeChild(children[i]);
-        i--; // adjust the loop index because the child array is now shorter
-      }
-    } */
     let col = -1; let row = 0;
     document.getElementById("t_tagcount").innerHTML = `${tags.length} Tags`;
     tags.forEach(tag => {
         if (++col == 3) {
             col = 0; ++row;
-            parent.appendChild(document.createElement("br"));
+            //parent.appendChild(document.createElement("br"));
         }
         /* Create box */
         var div = document.createElement("div");
         div.setAttribute("class", "tagbox");
         parent.appendChild(div);
-        div.style.gridColumn = col; div.style.gridRow = row;
+        /* div.style.gridColumn = col; div.style.gridRow = row; */
+        div.setAttribute("style", `grid-area:${row + 1} / ${col};`);
 
         /* Create link to tag filter */
         var link = document.createElement("p");
