@@ -14,19 +14,17 @@ export function showTagsPage() {
     }
     
     parent.replaceChildren(); /* No need to check if its a div/br anymore, just eliminate every child. */
-    let col = -1; let row = 0;
+    let col = -1; let row = 1;
     document.getElementById("t_tagcount").innerHTML = `${tags.length} Tags`;
     tags.forEach(tag => {
         if (++col == 3) {
             col = 0; ++row;
-            //parent.appendChild(document.createElement("br"));
         }
         /* Create box */
         var div = document.createElement("div");
         div.setAttribute("class", "tagbox");
         parent.appendChild(div);
-        /* div.style.gridColumn = col; div.style.gridRow = row; */
-        div.setAttribute("style", `grid-area:${row + 1} / ${col};`);
+        div.style.gridColumn = col; div.style.gridRow = row;
 
         /* Create link to tag filter */
         var link = document.createElement("p");
