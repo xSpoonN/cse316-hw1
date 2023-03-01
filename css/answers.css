@@ -1,5 +1,6 @@
 #ap_answers {
     border-collapse: collapse;
+    table-layout: fixed;
     padding: 10px;
     width: 100%;
 }
@@ -7,33 +8,36 @@
 #ap_questiontitle {
     text-align: center;
     display: inline-block;
+    vertical-align: top;
     width: 50%;
 }
 
 #ap_answercount {
     text-align: left;
     display: inline-block;
+    vertical-align: top;
     width: 20%;
 }
 
 #ap_views {
     text-align: left;
-    vertical-align: middle;
+    vertical-align: top;
     display: inline-block;
-    width: 10%;
-    height: 10%;
+    width: 20%;
 }
 
 #ap_questiontext {
     text-align: left;
     display: inline-block;
-    width: 65%;
+    vertical-align: top;
+    width: 50%;
 }
 
 #ap_askedby {
-    text-align: left;
+    text-align: right;
     display: inline-block;
     width: 20%;
+    vertical-align: bottom;
 }
 
 #newanswer {
@@ -46,6 +50,17 @@
 
 .aTD {
     padding: 15px;
+}
+
+.aAns {
+    width: 70%;
+    overflow-wrap: break-word;
+}
+
+.aCred {
+    width: 20%;
+    vertical-align: bottom;
+    text-align: right;
 }
 
 #ap_answerbutton {

@@ -253,14 +253,14 @@ export default class Model {
     } else {
       var newaid = "a" + (parseInt(this.data.answers.reduce((max, a) => parseInt(max.aid.substring(1)) > parseInt(a.aid.substring(1)) ? max : a).aid.substring(1)) + 1);
     }
-    console.log(`New AID: ${newaid}`);
+    //console.log(`New AID: ${newaid}`);
     this.data.answers.push({
       aid: newaid,
       text: text,
       ansBy: author,
       ansDate: time
     });
-    this.data.questions.find(item => item.qid === questionId).ansIds.push('a' + newaid);
+    this.data.questions.find(item => item.qid === questionId).ansIds.push(newaid);
     return newaid;
   }
 
@@ -271,7 +271,7 @@ export default class Model {
       console.log(this.data.questions.reduce((max, q) => parseInt(max.qid.substring(1)) > parseInt(q.qid.substring(1)) ? max : q).qid.substring(1));
       var newqid = "q" + (parseInt(this.data.questions.reduce((max, q) => parseInt(max.qid.substring(1)) > parseInt(q.qid.substring(1)) ? max : q).qid.substring(1)) + 1);
     }
-    console.log(`New QID: ${newqid}`);
+    //console.log(`New QID: ${newqid}`);
     this.data.questions.push({
       qid: newqid,
       title: newtitle,
@@ -290,7 +290,7 @@ export default class Model {
     } else {
       var newtid = "t" + (parseInt(this.data.tags.reduce((max, t) => parseInt(max.tid.substring(1)) > parseInt(t.tid.substring(1)) ? max : t).tid.substring(1)) + 1);
     }
-    console.log(`New TID: ${newtid}`);
+    //console.log(`New TID: ${newtid}`);
     this.data.tags.push({tid: newtid, name: tagname});
     return newtid;
   }
